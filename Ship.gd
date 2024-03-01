@@ -29,6 +29,7 @@ func _physics_process(delta):
 	# if Input.is_action_pressed("s"):
 	# 	apply_impulse(Vector3(0, 0, 1) * delta)
 
+	## Translations ##
 	# translate left
 	if Input.is_action_pressed("a"):
 		apply_impulse(Vector3(-1, 0, 0) * delta)
@@ -53,3 +54,29 @@ func _physics_process(delta):
 
 	# apply throttle
 	apply_impulse(Vector3(0, 0, -1) * throttle * delta)
+
+
+	## Rotations ##
+	# rotate +x
+	if Input.is_action_pressed("down"):
+		apply_torque_impulse(global_transform.basis.x * delta)
+
+	# rotate -x
+	if Input.is_action_pressed("up"):
+		apply_torque_impulse(-global_transform.basis.x * delta)
+	
+	# rotate +y
+	if Input.is_action_pressed("left"):
+		apply_torque_impulse(global_transform.basis.y * delta)
+
+	# rotate -y
+	if Input.is_action_pressed("right"):
+		apply_torque_impulse(-global_transform.basis.y * delta)
+
+	# rotate +z
+	if Input.is_action_pressed("q"):
+		apply_torque_impulse(global_transform.basis.z * delta)
+
+	# rotate -z
+	if Input.is_action_pressed("e"):
+		apply_torque_impulse(-global_transform.basis.z * delta)

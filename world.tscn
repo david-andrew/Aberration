@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=8 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
+[ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6eqga"]
+panorama = ExtResource("2_jrtur")
+
+[sub_resource type="Sky" id="Sky_u6aip"]
+sky_material = SubResource("PanoramaSkyMaterial_6eqga")
+
+[sub_resource type="Environment" id="Environment_4wuuw"]
+background_mode = 2
+sky = SubResource("Sky_u6aip")
 
 [node name="World" type="Node3D"]
 
@@ -17,8 +28,11 @@ shape = SubResource("BoxShape3D_278ud")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
 mesh = SubResource("BoxMesh_l6wpm")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="Ship"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.06839)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4wuuw")
