@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=4 format=3 uid="uid://dwyh17swso2yf"]
+
+[ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -6,12 +8,13 @@
 
 [node name="World" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="Ship" type="RigidBody3D" parent="."]
+script = ExtResource("1_dojcp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship"]
 shape = SubResource("BoxShape3D_278ud")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
 mesh = SubResource("BoxMesh_l6wpm")
 
 [node name="Camera3D" type="Camera3D" parent="."]
