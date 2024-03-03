@@ -2,9 +2,12 @@ extends RigidBody3D
 
 # throttle
 var throttle = 0
-var max_throttle = 2
-var min_throttle = -0.5
-var d_throttle = 0.1
+const max_throttle = 2
+const min_throttle = -0.5
+const d_throttle = 0.1
+
+const translation_strength = 1.0
+const rotation_strength = 0.5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +18,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# debug display throttle and x,y,z velocity (relative to self)
-	print("throttle: ", throttle, "velocity: ", linear_velocity)
+	print("throttle: ", throttle, ", velocity: ", linear_velocity)
 
 	pass
 
@@ -32,51 +35,52 @@ func _physics_process(delta):
 	## Translations ##
 	# translate left
 	if Input.is_action_pressed("a"):
-		apply_impulse(Vector3(-1, 0, 0) * delta)
+		apply_impulse(-global_transform.basis.x * delta * translation_strength)
 
 	# translate right
 	if Input.is_action_pressed("d"):
-		apply_impulse(Vector3(1, 0, 0) * delta)
+		apply_impulse(global_transform.basis.x * delta * translation_strength)
 
 	# translate up
 	if Input.is_action_pressed("w"):
-		apply_impulse(Vector3(0, -1, 0) * delta)
+		apply_impulse(global_transform.basis.y * delta * translation_strength)
 	
 	# translate down
 	if Input.is_action_pressed("s"):
-		apply_impulse(Vector3(0, 1, 0) * delta)
+		apply_impulse(-global_transform.basis.y * delta * translation_strength)
 
 	# throttle
 	if Input.is_action_pressed("shift"):
 		throttle = min(throttle + d_throttle * delta, max_throttle)
 	if Input.is_action_pressed("ctrl"):
 		throttle = max(throttle - d_throttle * delta, min_throttle)
-
+	if Input.is_action_just_pressed('space'):
+		throttle = 0
 	# apply throttle
-	apply_impulse(Vector3(0, 0, -1) * throttle * delta)
+	apply_impulse(-global_transform.basis.z * throttle * delta)
 
 
 	## Rotations ##
 	# rotate +x
 	if Input.is_action_pressed("down"):
-		apply_torque_impulse(global_transform.basis.x * delta)
+		apply_torque_impulse(global_transform.basis.x * delta * rotation_strength)
 
 	# rotate -x
 	if Input.is_action_pressed("up"):
-		apply_torque_impulse(-global_transform.basis.x * delta)
+		apply_torque_impulse(-global_transform.basis.x * delta * rotation_strength)
 	
 	# rotate +y
 	if Input.is_action_pressed("left"):
-		apply_torque_impulse(global_transform.basis.y * delta)
+		apply_torque_impulse(global_transform.basis.y * delta * rotation_strength)
 
 	# rotate -y
 	if Input.is_action_pressed("right"):
-		apply_torque_impulse(-global_transform.basis.y * delta)
+		apply_torque_impulse(-global_transform.basis.y * delta * rotation_strength)
 
 	# rotate +z
 	if Input.is_action_pressed("q"):
-		apply_torque_impulse(global_transform.basis.z * delta)
+		apply_torque_impulse(global_transform.basis.z * delta * rotation_strength)
 
 	# rotate -z
 	if Input.is_action_pressed("e"):
-		apply_torque_impulse(-global_transform.basis.z * delta)
+		apply_torque_impulse(-global_transform.basis.z * delta * rotation_strength)

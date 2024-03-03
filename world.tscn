@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=15 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
+[ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -17,9 +18,35 @@ sky_material = SubResource("PanoramaSkyMaterial_6eqga")
 background_mode = 2
 sky = SubResource("Sky_u6aip")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqo8g"]
+size = Vector3(10, 10, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m12wd"]
+transparency = 1
+albedo_color = Color(0.964706, 0.505882, 0.141176, 0.517647)
+
+[sub_resource type="BoxMesh" id="BoxMesh_smrug"]
+material = SubResource("StandardMaterial3D_m12wd")
+size = Vector3(10, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyjhj"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18ylm"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0.6, 0.639216, 1)
+albedo_texture = ExtResource("3_ytujd")
+uv1_scale = Vector3(300, 200, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8qny"]
+material = SubResource("StandardMaterial3D_18ylm")
+size = Vector3(100, 1, 100)
+
 [node name="World" type="Node3D"]
 
 [node name="Ship" type="RigidBody3D" parent="."]
+angular_damp = 1.0
 script = ExtResource("1_dojcp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship"]
@@ -36,3 +63,21 @@ transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.56
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4wuuw")
+
+[node name="TestObstacle" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1467, -12.6368)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestObstacle"]
+shape = SubResource("BoxShape3D_aqo8g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestObstacle"]
+mesh = SubResource("BoxMesh_smrug")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06689, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_oyjhj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_g8qny")
