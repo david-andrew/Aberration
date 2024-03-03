@@ -1,10 +1,10 @@
 extends RigidBody3D
 
 # throttle
-var throttle = 0
-const max_throttle = 2
-const min_throttle = -0.5
-const d_throttle = 0.1
+#var throttle = 0
+#const max_throttle = 2
+#const min_throttle = -0.5
+#const d_throttle = 0.1
 
 const translation_strength = 1.0
 const rotation_strength = 0.5
@@ -17,13 +17,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# debug display throttle and x,y,z velocity (relative to self)
-	print("throttle: ", throttle, ", velocity: ", linear_velocity)
-
 	pass
 
 
 func _physics_process(delta):
+	# debug display throttle and x,y,z velocity (relative to self)
+	#print("throttle: ", throttle, ", velocity: ", linear_velocity)
+	
 	# # translate forward
 	# if Input.is_action_pressed("w"):
 	# 	apply_impulse(Vector3(0, 0, -1) * delta)
@@ -51,13 +51,16 @@ func _physics_process(delta):
 
 	# throttle
 	if Input.is_action_pressed("shift"):
-		throttle = min(throttle + d_throttle * delta, max_throttle)
+		#throttle = min(throttle + d_throttle * delta, max_throttle)
+		apply_impulse(-global_transform.basis.z * delta * translation_strength)
+		
 	if Input.is_action_pressed("ctrl"):
-		throttle = max(throttle - d_throttle * delta, min_throttle)
-	if Input.is_action_just_pressed('space'):
-		throttle = 0
+		#throttle = max(throttle - d_throttle * delta, min_throttle)
+		apply_impulse(global_transform.basis.z * delta * translation_strength)
+	#if Input.is_action_just_pressed('space'):
+		#throttle = 0
 	# apply throttle
-	apply_impulse(-global_transform.basis.z * throttle * delta)
+	#apply_impulse(-global_transform.basis.z * throttle * delta)
 
 
 	## Rotations ##
