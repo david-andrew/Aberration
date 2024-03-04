@@ -18,8 +18,6 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	# calculate the distance between the camera and the target
-	#var distance = target.get_global_transform().origin.distance_to(global_transform.origin)
 
 	# apply the spring force
 	apply_central_force(spring * (target.get_global_transform().origin - global_transform.origin))
@@ -27,5 +25,8 @@ func _physics_process(delta):
 	# apply the damping force
 	apply_central_force(-damping * linear_velocity)
 
-	# look at the target
-	look_at(target_parent.get_global_transform().origin, Vector3(0, 1, 0))
+	# align the camera frame with the target_parent's frame
+	transform.basis = target_parent.get_global_transform().basis
+	#TODO: two things:
+	#      - this should look at where the target is going based on its velocity
+	#      - instead of snapping the basis to exactly be the target's, it could also be spring/damper based
