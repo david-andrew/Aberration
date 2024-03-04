@@ -1,5 +1,9 @@
 extends RigidBody3D
 
+
+# DEBUG
+@export var health: Health
+
 # throttle
 #var throttle = 0
 #const max_throttle = 2
@@ -21,6 +25,10 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	
+	if Input.is_action_just_pressed('space'):
+		
+		health.damage(1)
 	# debug display throttle and x,y,z velocity (relative to self)
 	#print("throttle: ", throttle, ", velocity: ", linear_velocity)
 	
