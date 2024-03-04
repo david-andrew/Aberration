@@ -3,8 +3,8 @@ extends RigidBody3D
 @export var target: CameraTarget
 var target_parent: Node3D
 
-@export var spring: float = 20.0
-@export var damping: float = 5
+@export var spring: float = 15.0
+@export var damping: float = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +20,7 @@ func _process(delta):
 func _physics_process(delta):
 
 	# apply the spring force
-	apply_central_force(spring * (target.get_global_transform().origin - global_transform.origin))
+	apply_central_force(spring*spring * (target.get_global_transform().origin - global_transform.origin))
 	
 	# apply the damping force
 	apply_central_force(-damping * linear_velocity)

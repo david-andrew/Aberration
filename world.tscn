@@ -38,18 +38,18 @@ material = SubResource("StandardMaterial3D_m12wd")
 size = Vector3(10, 10, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oyjhj"]
-size = Vector3(100, 1, 100)
+size = Vector3(100, 100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18ylm"]
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0, 0.6, 0.639216, 1)
 albedo_texture = ExtResource("3_ytujd")
-uv1_scale = Vector3(300, 200, 1)
+uv1_scale = Vector3(75, 50, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g8qny"]
 material = SubResource("StandardMaterial3D_18ylm")
-size = Vector3(100, 1, 100)
+size = Vector3(100, 100, 100)
 
 [node name="World" type="Node3D"]
 
@@ -91,7 +91,7 @@ shape = SubResource("BoxShape3D_aqo8g")
 mesh = SubResource("BoxMesh_smrug")
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.06689, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_oyjhj")

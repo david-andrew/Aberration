@@ -60,7 +60,7 @@ func _physics_process(delta):
 	# throttle
 	if Input.is_action_pressed("shift"):
 		#throttle = min(throttle + d_throttle * delta, max_throttle)
-		apply_impulse(-global_transform.basis.z * delta * translation_strength)
+		apply_impulse(-global_transform.basis.z * delta * translation_strength*5)
 		
 	if Input.is_action_pressed("ctrl"):
 		#throttle = max(throttle - d_throttle * delta, min_throttle)
