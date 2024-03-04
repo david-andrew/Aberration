@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=20 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
 [ext_resource type="Script" path="res://Health.gd" id="2_hybe2"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
 [ext_resource type="Script" path="res://Hitbox.gd" id="3_skumh"]
 [ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
+[ext_resource type="Script" path="res://CameraTarget.gd" id="4_mhwvw"]
+[ext_resource type="Script" path="res://ChaseCamera.gd" id="7_3p5ke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -69,6 +71,10 @@ MESH = NodePath("../MeshInstance3D")
 [node name="Hitbox" type="Area3D" parent="Ship"]
 script = ExtResource("3_skumh")
 
+[node name="CameraTarget" type="Node3D" parent="Ship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43924)
+script = ExtResource("4_mhwvw")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
 
@@ -93,5 +99,8 @@ shape = SubResource("BoxShape3D_oyjhj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_g8qny")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.06839)
+[node name="ChaseCamera" type="RigidBody3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("7_3p5ke")
+target = NodePath("../Ship/CameraTarget")
+
+[node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
