@@ -60,6 +60,7 @@ health = NodePath("Health")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship"]
 shape = SubResource("BoxShape3D_278ud")
+script = ExtResource("3_skumh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
 mesh = SubResource("BoxMesh_l6wpm")
@@ -68,11 +69,8 @@ mesh = SubResource("BoxMesh_l6wpm")
 script = ExtResource("2_hybe2")
 MESH = NodePath("../MeshInstance3D")
 
-[node name="Hitbox" type="Area3D" parent="Ship"]
-script = ExtResource("3_skumh")
-
 [node name="CameraTarget" type="Node3D" parent="Ship"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.79877)
 script = ExtResource("4_mhwvw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -83,12 +81,17 @@ environment = SubResource("Environment_4wuuw")
 
 [node name="TestObstacle" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1467, -12.6368)
+mass = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestObstacle"]
 shape = SubResource("BoxShape3D_aqo8g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestObstacle"]
 mesh = SubResource("BoxMesh_smrug")
+
+[node name="Health" type="Node" parent="TestObstacle" node_paths=PackedStringArray("MESH")]
+script = ExtResource("2_hybe2")
+MESH = NodePath("../MeshInstance3D")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50.5, 0)
