@@ -24,8 +24,15 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	
+	
 	test_velocity = global_position - prev_test_position
 	prev_test_position = global_position
+
+	#return early if target instance is no longer valid
+	if !is_instance_valid(target):
+		apply_central_force(-damping/10 * test_velocity)
+		return
 
 	# apply the spring force
 	var distance = target.get_global_transform().origin - global_transform.origin

@@ -1,7 +1,6 @@
 extends RigidBody3D
 
 
-#var GameMaster: GameMasterClass
 
 # DEBUG
 @export var health: Health
@@ -20,6 +19,7 @@ const SHOOT_FREQUENCY = 20 #shots/second
 var last_shot_time = Time.get_ticks_msec()
 const FULL_AUTOMATIC_MODE = false #false means burst mode
 const BULLETS_PER_SHOT = 3 #burst mode, like halo combat rifle
+const BULLET_INITIAL_SPEED = 1
 # preload resource for bullets
 const BULLET = preload("res://bullet.tscn")
 var total_bullets_shot = 0
@@ -28,7 +28,8 @@ var bullet_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-	#GameMaster = get_node("/root/GameMaster")
+	contact_monitor = true
+	max_contacts_reported = 10
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,16 +43,28 @@ func shoot():
 		GameMaster.current_scene.add_child(bullet)
 		bullet.global_basis = global_basis
 		bullet.position = global_position
-		print('spawning bullet at ', global_position)
 		bullet.global_position -= 2*global_transform.basis.z
-		bullet.linear_velocity = linear_velocity -100 * global_transform.basis.z
+		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z
 		last_shot_time = Time.get_ticks_msec()
 		total_bullets_shot += 1
 		#if !FULL_AUTOMATIC_MODE:
 			#bullet_count += 1
 
-func _physics_process(delta):
+func handle_collisions():
+	var colliders = get_colliding_bodies()
+	var damagers = []
+	for collider in colliders:
+		if collider.has_method('give_damage'):
+			health.damage(collider.give_damage())
+			damagers.append(collider)
+			collider.queue_free()
+	if len(damagers) > 0:
+		print('damaging: ', damagers)
 	
+
+func _physics_process(delta):
+	handle_collisions()
+
 	if Input.is_action_pressed('space'):
 		shoot()
 	if Input.is_action_just_released('space'):

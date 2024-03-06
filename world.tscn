@@ -103,6 +103,7 @@ shape = SubResource("BoxShape3D_oyjhj")
 mesh = SubResource("BoxMesh_g8qny")
 
 [node name="ChaseCamera" type="RigidBody3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.71112)
 script = ExtResource("7_3p5ke")
 target = NodePath("../Ship/CameraTarget")
 
