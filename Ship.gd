@@ -36,9 +36,9 @@ func shoot():
 		var bullet = BULLET.instantiate()
 		GameMaster.current_scene.add_child(bullet)
 		bullet.global_basis = global_basis
-		bullet.position = global_position
+		bullet.position = global_position + Vector3(randf(), randf(), randf()) * 0.5
 		bullet.global_position -= 2*global_transform.basis.z
-		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z
+		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z + Vector3(randf(), randf(), randf()) * 2
 		last_shot_time = Time.get_ticks_msec()
 		total_bullets_shot += 1
 		#if !FULL_AUTOMATIC_MODE:
