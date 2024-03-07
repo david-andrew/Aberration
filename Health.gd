@@ -39,7 +39,6 @@ func handle_collisions():
 		if collider.has_method('give_damage'):
 			damage(collider.give_damage())
 			damagers.append(collider)
-			collider.queue_free()
 	if len(damagers) > 0:
 		print('damage: ', damagers)
 
