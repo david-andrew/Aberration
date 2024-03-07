@@ -27,6 +27,9 @@ func add_bullet() -> int:
 	bullet_id += 1
 	return bullet_id
 
+func remove_bullet():
+	total_bullets -= 1
+
 func cull_bullets():
 	if total_bullets <= MAX_BULLETS:
 		return
