@@ -31,7 +31,7 @@ func _physics_process(delta):
 
 	#return early if target instance is no longer valid
 	if !is_instance_valid(target):
-		apply_central_force(-damping/10 * test_velocity)
+		apply_central_force(-damping/20 * test_velocity)
 		return
 
 	# apply the spring force

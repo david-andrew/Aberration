@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwxo76t5hck46"]
+
+[ext_resource type="Script" path="res://Health.gd" id="1_rvxh1"]
+
+[node name="Health" type="Node" node_paths=PackedStringArray("MESH")]
+script = ExtResource("1_rvxh1")
+MESH = NodePath("")
