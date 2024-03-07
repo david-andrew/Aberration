@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=17 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
 [ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_1cdyd"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
 [ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
 [ext_resource type="Script" path="res://CameraTarget.gd" id="4_mhwvw"]
+[ext_resource type="PackedScene" uid="uid://hjumkqtwnyv3" path="res://test_obstacle.tscn" id="5_xvr0y"]
 [ext_resource type="Script" path="res://ChaseCamera.gd" id="7_3p5ke"]
-[ext_resource type="PackedScene" uid="uid://bvbgyeistbn8e" path="res://bullet.tscn" id="7_gb1wi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -25,27 +25,6 @@ sky_material = SubResource("PanoramaSkyMaterial_6eqga")
 [sub_resource type="Environment" id="Environment_4wuuw"]
 background_mode = 2
 sky = SubResource("Sky_u6aip")
-
-[sub_resource type="GDScript" id="GDScript_gvbqf"]
-script/source = "extends RigidBody3D
-
-
-func _physics_process(delta):
-	var colliding = get_colliding_bodies()
-	if len(colliding) > 0:
-		print('test object colliding: ', colliding)
-"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_aqo8g"]
-size = Vector3(10, 10, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m12wd"]
-transparency = 1
-albedo_color = Color(0.964706, 0.505882, 0.141176, 0.517647)
-
-[sub_resource type="BoxMesh" id="BoxMesh_smrug"]
-material = SubResource("StandardMaterial3D_m12wd")
-size = Vector3(10, 10, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oyjhj"]
 size = Vector3(100, 100, 100)
@@ -85,19 +64,8 @@ transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.56
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4wuuw")
 
-[node name="TestObstacle" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1467, -12.6368)
-collision_mask = 2
-mass = 100.0
-script = SubResource("GDScript_gvbqf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestObstacle"]
-shape = SubResource("BoxShape3D_aqo8g")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TestObstacle"]
-mesh = SubResource("BoxMesh_smrug")
-
-[node name="Health" parent="TestObstacle" instance=ExtResource("2_1cdyd")]
+[node name="TestObstacle" parent="." instance=ExtResource("5_xvr0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -13)
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50.5, 0)
@@ -115,4 +83,17 @@ target = NodePath("../Ship/CameraTarget")
 
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
 
-[node name="Bullet" parent="." instance=ExtResource("7_gb1wi")]
+[node name="TestObstacle2" parent="." instance=ExtResource("5_xvr0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2934, 39.8811)
+
+[node name="TestObstacle3" parent="." instance=ExtResource("5_xvr0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1467, 18.5556)
+
+[node name="TestObstacle4" parent="." instance=ExtResource("5_xvr0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2934, -25.2736)
+
+[node name="TestObstacle5" parent="." instance=ExtResource("5_xvr0y")]
+transform = Transform3D(0.949243, 0.0516866, -0.310267, 0.297699, 0.170828, 0.939252, 0.101549, -0.983944, 0.14677, 0, 12.8369, 9.14438)
+
+[node name="TestObstacle6" parent="." instance=ExtResource("5_xvr0y")]
+transform = Transform3D(-0.0680326, 0, -0.997683, 0, 1, 0, 0.997683, 0, -0.0680326, 17.1377, 5.1467, 2.19327)
