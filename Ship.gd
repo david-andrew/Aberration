@@ -18,10 +18,11 @@ const BULLET = preload("res://bullet.tscn")
 var total_bullets_shot = 0
 var bullet_count = 0
 
+@onready var laser = $Laser
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	laser.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,20 +47,24 @@ func shoot_bullet():
 
 func _physics_process(delta):
 
+
 	if Input.is_action_pressed('space'):
 		if selected_weapon == WeaponType.BULLET:
 			shoot_bullet()
-		elif selected_weapon == WeaponType.LASER:
-			print('TODO: shoot laser')
+		if selected_weapon == WeaponType.LASER:
+			laser.visible = true
 	
 	if Input.is_action_just_released('space'):
 		if selected_weapon == WeaponType.BULLET:
 			bullet_count = 0
 		elif selected_weapon == WeaponType.LASER:
-			print('end of firing laser')	
+			#print('end of firing laser')
+			laser.visible = false
 
 	if Input.is_action_just_pressed("caps-lock"):
 		selected_weapon = (selected_weapon + 1) % WeaponType.size()
+		if selected_weapon != WeaponType.LASER:
+			laser.visible = false
 	
 
 	## Translations ##
