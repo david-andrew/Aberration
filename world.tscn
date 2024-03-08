@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=18 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
 [ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_1cdyd"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
 [ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
+[ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://laser.tscn" id="4_c62u1"]
 [ext_resource type="Script" path="res://CameraTarget.gd" id="4_mhwvw"]
 [ext_resource type="Script" path="res://ChaseCamera.gd" id="7_3p5ke"]
 [ext_resource type="PackedScene" uid="uid://d0cn0wfyxb1kj" path="res://new_test_obstacle.tscn" id="7_6bovt"]
@@ -50,6 +51,7 @@ script = ExtResource("1_dojcp")
 shape = SubResource("BoxShape3D_278ud")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
+visible = false
 mesh = SubResource("BoxMesh_l6wpm")
 
 [node name="CameraTarget" type="Node3D" parent="Ship"]
@@ -57,6 +59,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.79877)
 script = ExtResource("4_mhwvw")
 
 [node name="Health" parent="Ship" instance=ExtResource("2_1cdyd")]
+
+[node name="Laser" parent="Ship" instance=ExtResource("4_c62u1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
@@ -81,6 +86,7 @@ target = NodePath("../Ship/CameraTarget")
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
 
 [node name="NewTestObstacle" parent="." instance=ExtResource("7_6bovt")]
+transform = Transform3D(1, 0, 0, 0, -0.456477, 0.889735, 0, -0.889735, -0.456477, 0, 7.57625, -7.01928)
 
 [node name="NewTestObstacle2" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.1525, -14.0386)

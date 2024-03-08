@@ -1,13 +1,11 @@
 extends RigidBody3D
 
-# throttle
-#var throttle = 0
-#const max_throttle = 2
-#const min_throttle = -0.5
-#const d_throttle = 0.1
 
 const translation_strength = 1.0
 const rotation_strength = 0.5
+
+enum WeaponType {BULLET, LASER}
+var selected_weapon: WeaponType = WeaponType.BULLET
 
 
 const SHOOT_FREQUENCY = 20 #shots/second
@@ -31,7 +29,7 @@ func _process(delta):
 	pass
 
 
-func shoot():
+func shoot_bullet():
 	if Time.get_ticks_msec() - last_shot_time > (1000 / SHOOT_FREQUENCY) and bullet_count < BULLETS_PER_SHOT:
 		var bullet = BULLET.instantiate()
 		GameMaster.current_scene.add_child(bullet)
@@ -49,21 +47,20 @@ func shoot():
 func _physics_process(delta):
 
 	if Input.is_action_pressed('space'):
-		shoot()
-	if Input.is_action_just_released('space'):
-		bullet_count = 0
-		
-
-	# debug display throttle and x,y,z velocity (relative to self)
-	#print("throttle: ", throttle, ", velocity: ", linear_velocity)
+		if selected_weapon == WeaponType.BULLET:
+			shoot_bullet()
+		elif selected_weapon == WeaponType.LASER:
+			print('TODO: shoot laser')
 	
-	# # translate forward
-	# if Input.is_action_pressed("w"):
-	# 	apply_impulse(Vector3(0, 0, -1) * delta)
+	if Input.is_action_just_released('space'):
+		if selected_weapon == WeaponType.BULLET:
+			bullet_count = 0
+		elif selected_weapon == WeaponType.LASER:
+			print('end of firing laser')	
 
-	# # translate backward
-	# if Input.is_action_pressed("s"):
-	# 	apply_impulse(Vector3(0, 0, 1) * delta)
+	if Input.is_action_just_pressed("caps-lock"):
+		selected_weapon = (selected_weapon + 1) % WeaponType.size()
+	
 
 	## Translations ##
 	# translate left

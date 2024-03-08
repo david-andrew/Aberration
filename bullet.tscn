@@ -5,12 +5,12 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_v8rr2"]
 radius = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vw2dk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3laek"]
 cull_mode = 1
 shading_mode = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_3anm5"]
-material = SubResource("StandardMaterial3D_vw2dk")
+material = SubResource("StandardMaterial3D_3laek")
 radius = 0.25
 height = 0.5
 
