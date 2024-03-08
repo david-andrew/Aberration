@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0cn0wfyxb1kj"]
+
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="1_v3dad"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wavts"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.898039, 0.482353, 0, 0.835294)
+
+[sub_resource type="BoxMesh" id="BoxMesh_68qoa"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_wavts")
+size = Vector3(10, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5oov"]
+size = Vector3(10, 10, 1)
+
+[node name="NewTestObstacle" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.57625, -7.01928)
+mass = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_68qoa")
+
+[node name="Health" parent="." instance=ExtResource("1_v3dad")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o5oov")
