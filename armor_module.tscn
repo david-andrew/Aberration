@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://br7h0hapmvd3y"]
+
+[ext_resource type="Script" path="res://ArmorModule.gd" id="1_eub82"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_40njn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4d71"]
+size = Vector3(1, 10, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jy8u"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_fsege"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3jy8u")
+size = Vector3(1, 10, 20)
+
+[node name="ArmorModule" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1257, 0, 0)
+mass = 10.0
+script = ExtResource("1_eub82")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_j4d71")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_fsege")
+
+[node name="Health" parent="." instance=ExtResource("2_40njn")]
+MAX_HEALTH = 200

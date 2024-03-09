@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://drdrepn61gjni"]
+
+[ext_resource type="Script" path="res://shield.gd" id="1_3t5fh"]
+[ext_resource type="Shader" path="res://shield.gdshader" id="1_o8xan"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="3_46cg5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp88d"]
+render_priority = 0
+shader = ExtResource("1_o8xan")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6a2xr"]
+material = SubResource("ShaderMaterial_xp88d")
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_18y50"]
+radius = 10.0
+
+[node name="Shield" type="RigidBody3D"]
+script = ExtResource("1_3t5fh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_6a2xr")
+skeleton = NodePath("../..")
+
+[node name="Health" parent="." instance=ExtResource("3_46cg5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_18y50")

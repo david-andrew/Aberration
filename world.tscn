@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=21 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://Ship.gd" id="1_dojcp"]
+[ext_resource type="PackedScene" uid="uid://d00ceoa2orkku" path="res://large_ship_core.tscn" id="1_xh38e"]
 [ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_1cdyd"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
 [ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
@@ -8,6 +9,8 @@
 [ext_resource type="Script" path="res://CameraTarget.gd" id="4_mhwvw"]
 [ext_resource type="Script" path="res://ChaseCamera.gd" id="7_3p5ke"]
 [ext_resource type="PackedScene" uid="uid://d0cn0wfyxb1kj" path="res://new_test_obstacle.tscn" id="7_6bovt"]
+[ext_resource type="PackedScene" uid="uid://drdrepn61gjni" path="res://shield.tscn" id="9_ria2g"]
+[ext_resource type="PackedScene" uid="uid://br7h0hapmvd3y" path="res://armor_module.tscn" id="11_d4rwp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -43,6 +46,17 @@ size = Vector3(100, 100, 100)
 
 [node name="World" type="Node3D"]
 
+[node name="LargeShipCore" parent="." instance=ExtResource("1_xh38e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1451, 16.2337, 0)
+
+[node name="ArmorModule" parent="LargeShipCore" instance=ExtResource("11_d4rwp")]
+
+[node name="ArmorModule2" parent="LargeShipCore" instance=ExtResource("11_d4rwp")]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, -1.57418, -4.6682, 0)
+
+[node name="ArmorModule3" parent="LargeShipCore" instance=ExtResource("11_d4rwp")]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -2.07912, 4.28951, 0)
+
 [node name="Ship" type="RigidBody3D" parent="."]
 angular_damp = 1.0
 script = ExtResource("1_dojcp")
@@ -51,7 +65,6 @@ script = ExtResource("1_dojcp")
 shape = SubResource("BoxShape3D_278ud")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
-visible = false
 mesh = SubResource("BoxMesh_l6wpm")
 
 [node name="CameraTarget" type="Node3D" parent="Ship"]
@@ -64,6 +77,9 @@ script = ExtResource("4_mhwvw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.935301, -0.0408648, 0.351485, 0.301389, -0.612465, 0.730788, 0.185409, 0.789441, 0.585156, -1.73873, 1.67446, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4wuuw")
@@ -86,12 +102,21 @@ target = NodePath("../Ship/CameraTarget")
 
 [node name="NewTestObstacle" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(1, 0, 0, 0, -0.456477, 0.889735, 0, -0.889735, -0.456477, 0, 7.57625, -7.01928)
+visible = false
 
 [node name="NewTestObstacle2" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.1525, -14.0386)
+
+[node name="Shield" parent="NewTestObstacle2" instance=ExtResource("9_ria2g")]
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="NewTestObstacle2"]
+node_a = NodePath("..")
+node_b = NodePath("../Shield")
 
 [node name="NewTestObstacle3" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(1, 0, 0, 0, 0.547446, 0.836841, 0, -0.836841, 0.547446, 0, 7.57625, 8.46046)
 
 [node name="NewTestObstacle4" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(-0.464326, -0.754404, -0.463978, -0.843392, 0.536549, -0.0283761, 0.270354, 0.37814, -0.885392, 23.9953, 9.93048, 17.2644)
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]

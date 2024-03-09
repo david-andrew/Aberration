@@ -52,4 +52,7 @@ func damage(pts: int):
 		print('color is: ', MATERIAL.albedo_color)
 	
 	if health <= 0:
-		get_parent().queue_free()
+		if parent.has_method('destroy'):
+			parent.destroy()
+		else:
+			parent.queue_free()
