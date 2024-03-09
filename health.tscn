@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://Health.gd" id="1_rvxh1"]
 
-[node name="Health" type="Node" node_paths=PackedStringArray("MESH")]
+[node name="Health" type="Node"]
 script = ExtResource("1_rvxh1")
-MESH = NodePath("")

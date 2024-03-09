@@ -61,7 +61,6 @@ script = ExtResource("4_mhwvw")
 [node name="Health" parent="Ship" instance=ExtResource("2_1cdyd")]
 
 [node name="Laser" parent="Ship" instance=ExtResource("4_c62u1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)

@@ -1,7 +1,7 @@
 extends Node
 class_name Health
 
-@export var MAX_HEALTH: int = 10
+@export var MAX_HEALTH: int = 100
 var MESH: MeshInstance3D
 var MATERIAL: StandardMaterial3D
 var health: int

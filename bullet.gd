@@ -16,7 +16,7 @@ func give_damage() -> int:
 	GameMaster.remove_bullet()
 	queue_free()
 	
-	return 1
+	return 10
 
 func _ready():
 	id = GameMaster.add_bullet()
