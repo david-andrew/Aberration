@@ -1,13 +1,13 @@
 extends RayCast3D
 
 @onready var beam_mesh = $MeshInstance3D
-
 @onready var endpoint_mesh = $endpoint
 
-#export var MAX_DISTANCE:int = 10000
+#var laser_firing = false #TODO
 
 func _ready():
 	enabled = false #only use force_raycast_update
+	visible = true # debug testing
 
 func _physics_process(delta):
 	if not visible: #visibility determines if active or not
