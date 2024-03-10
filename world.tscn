@@ -110,7 +110,7 @@ shape = SubResource("BoxShape3D_278ud")
 mesh = SubResource("BoxMesh_l6wpm")
 
 [node name="CameraTarget" type="Node3D" parent="Ship"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.79877)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
 script = ExtResource("4_mhwvw")
 
 [node name="Health" parent="Ship" instance=ExtResource("2_1cdyd")]
