@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4xvtwo36e6ho"]
+
+[ext_resource type="Script" path="res://PowerModule.gd" id="1_7ax06"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_vitx4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0cji"]
+resource_local_to_scene = true
+albedo_color = Color(0.913725, 0.690196, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4v4j8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_r0cji")
+top_radius = 2.0
+bottom_radius = 2.0
+height = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ksva6"]
+height = 4.0
+radius = 2.0
+
+[node name="PowerModule" type="RigidBody3D"]
+mass = 100.0
+script = ExtResource("1_7ax06")
+
+[node name="Health" parent="." instance=ExtResource("2_vitx4")]
+MAX_HEALTH = 20
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_4v4j8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_ksva6")

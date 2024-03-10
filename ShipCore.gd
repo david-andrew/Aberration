@@ -1,4 +1,5 @@
-extends ShipCore
+extends RigidBody3D
+class_name ShipCore
 
 @export var player_controlled: bool = false
 
