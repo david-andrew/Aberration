@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://bmp7yhbooljq0"]
 
-[ext_resource type="Script" path="res://LaserModule.gd" id="1_tgvav"]
-[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_xmo3n"]
-[ext_resource type="Script" path="res://laser.gd" id="3_wjleh"]
+[ext_resource type="Script" path="res://scripts/LaserModule.gd" id="1_tgvav"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="2_xmo3n"]
+[ext_resource type="Script" path="res://scripts/laser.gd" id="3_wjleh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ccmn"]
 resource_local_to_scene = true

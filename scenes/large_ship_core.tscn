@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d00ceoa2orkku"]
 
-[ext_resource type="Script" path="res://ShipCore.gd" id="1_4ph5b"]
-[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="2_bmpao"]
+[ext_resource type="Script" path="res://scripts/ShipCore.gd" id="1_4ph5b"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="2_bmpao"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7nfg"]
 size = Vector3(4, 4, 100)

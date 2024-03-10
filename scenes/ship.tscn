@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://4pfxyw3vk44l"]
 
-[ext_resource type="Script" path="res://Ship.gd" id="1_7tb4e"]
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="1_7tb4e"]
 [ext_resource type="Script" path="res://Hitbox.gd" id="2_0fb8k"]
-[ext_resource type="Script" path="res://Health.gd" id="3_hdyy6"]
-[ext_resource type="Script" path="res://CameraTarget.gd" id="4_gn4hg"]
+[ext_resource type="Script" path="res://scripts/Health.gd" id="3_hdyy6"]
+[ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="4_gn4hg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 

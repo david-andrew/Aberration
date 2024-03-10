@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://2hjj40vl384t"]
 
-[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="1_7ga73"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="1_7ga73"]
 
 [sub_resource type="GDScript" id="GDScript_gvbqf"]
 script/source = "extends RigidBody3D

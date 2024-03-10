@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://drdrepn61gjni"]
 
-[ext_resource type="Script" path="res://shield.gd" id="1_bemu2"]
+[ext_resource type="Script" path="res://scripts/shield.gd" id="1_bemu2"]
 [ext_resource type="Shader" path="res://shield.gdshader" id="2_ahx4i"]
-[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://health.tscn" id="3_yx4f6"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="3_yx4f6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xp88d"]
 render_priority = 0

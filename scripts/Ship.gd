@@ -14,7 +14,7 @@ const FULL_AUTOMATIC_MODE = false #false means burst mode
 const BULLETS_PER_SHOT = 3 #burst mode, like halo combat rifle
 const BULLET_INITIAL_SPEED = 100
 # preload resource for bullets
-const BULLET = preload("res://bullet.tscn")
+const BULLET = preload("res://scenes/bullet.tscn")
 var total_bullets_shot = 0
 var bullet_count = 0
 
