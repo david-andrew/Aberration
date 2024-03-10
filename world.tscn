@@ -54,7 +54,6 @@ size = Vector3(100, 100, 100)
 
 [node name="LargeShipCore" parent="." instance=ExtResource("1_xh38e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1451, 16.2337, 0)
-player_controlled = false
 
 [node name="ArmorModule" parent="LargeShipCore" instance=ExtResource("11_d4rwp")]
 
@@ -100,23 +99,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 50)
 [node name="LaserModule5" parent="LargeShipCore" instance=ExtResource("5_ds7nv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 50)
 
-[node name="Ship" type="RigidBody3D" parent="."]
+[node name="Player" type="RigidBody3D" parent="."]
 angular_damp = 1.0
 script = ExtResource("1_dojcp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("BoxShape3D_278ud")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ship"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("BoxMesh_l6wpm")
 
-[node name="CameraTarget" type="Node3D" parent="Ship"]
+[node name="CameraTarget" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
 script = ExtResource("4_mhwvw")
 
-[node name="Health" parent="Ship" instance=ExtResource("2_1cdyd")]
+[node name="Health" parent="Player" instance=ExtResource("2_1cdyd")]
 
-[node name="Laser" parent="Ship" instance=ExtResource("4_c62u1")]
+[node name="Laser" parent="Player" instance=ExtResource("4_c62u1")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
@@ -139,7 +138,7 @@ mesh = SubResource("BoxMesh_g8qny")
 [node name="ChaseCamera" type="RigidBody3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.71112)
 script = ExtResource("7_3p5ke")
-target = NodePath("../Ship/CameraTarget")
+target = NodePath("../Player/CameraTarget")
 
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
 
