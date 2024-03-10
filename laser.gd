@@ -29,7 +29,7 @@ func _physics_process(delta):
 
 
 		
-	print('laser colliding with: ', collider)
+	#print('laser colliding with: ', collider)
 
 	# drawing the laser/mesh
 	beam_mesh.mesh.height = cast_point.z
