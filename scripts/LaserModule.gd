@@ -35,13 +35,14 @@ func shoot(physics_delta):
 			if is_equal_approx(shot_power_usage, power_taken):
 				can_shoot = true
 				break
-
-	laser.visible = can_shoot
-	#if can_shoot:
-		#pass
-	#else:
-		#pass
 	
+	laser.visible = can_shoot
+	if not can_shoot and power_taken > 0:
+		#distribute any unused power to all the batteries
+		for module in power_modules:
+			if is_instance_valid(module) and module.get_parent() == original_parent:
+				module.add_power(power_taken / power_modules.size())
+				
 
 func _physics_process(delta):
 	if command_shoot:
