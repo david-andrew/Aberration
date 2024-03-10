@@ -15,5 +15,9 @@ func destroy():
 			remove_child(child)
 			new_parent.add_child(child)
 			child.global_transform = old_transform
+			
+			# give each child a slight kick
+			child.linear_velocity += Vector3(randfn(0, 1), randfn(0, 1), randfn(0, 1))
+			child.angular_velocity += Vector3(randfn(0, 1), randfn(0, 1), randfn(0, 1)) * 0.25
 
 	queue_free() # safely remove the parent from the scene

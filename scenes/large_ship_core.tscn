@@ -19,7 +19,6 @@ size = Vector3(4, 4, 100)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1788, 16.2337, 0)
 mass = 100.0
 script = ExtResource("1_4ph5b")
-player_controlled = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_i7nfg")

@@ -54,6 +54,7 @@ size = Vector3(100, 100, 100)
 
 [node name="LargeShipCore" parent="." instance=ExtResource("1_xh38e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1451, 16.2337, 0)
+player_controlled = false
 
 [node name="ArmorModule" parent="LargeShipCore" instance=ExtResource("11_d4rwp")]
 
