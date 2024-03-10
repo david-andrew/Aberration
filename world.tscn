@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://CameraTarget.gd" id="4_mhwvw"]
 [ext_resource type="Script" path="res://ChaseCamera.gd" id="7_3p5ke"]
 [ext_resource type="PackedScene" uid="uid://d0cn0wfyxb1kj" path="res://new_test_obstacle.tscn" id="7_6bovt"]
-[ext_resource type="PackedScene" uid="uid://drdrepn61gjni" path="res://shield.tscn" id="9_ria2g"]
+[ext_resource type="PackedScene" uid="uid://drdrepn61gjni" path="res://OLD_shield.tscn" id="9_ria2g"]
 [ext_resource type="PackedScene" uid="uid://br7h0hapmvd3y" path="res://armor_module.tscn" id="11_d4rwp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o88eg"]

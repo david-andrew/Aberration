@@ -48,7 +48,7 @@ func damage(pts: int):
 
 	# interpolate the color based on the health
 	if MATERIAL:
-		MATERIAL.albedo_color = initial_color.lerp(Color(0, 0, 0), 1.0 - (float(health - 1) / (MAX_HEALTH - 1)))
+		MATERIAL.albedo_color = initial_color.lerp(Color(0, 0, 0, initial_color.a), 1.0 - (float(health - 1) / (MAX_HEALTH - 1)))
 		print('color is: ', MATERIAL.albedo_color)
 	
 	if health <= 0:
