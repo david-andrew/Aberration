@@ -19,9 +19,10 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_0ohm0")
 size = Vector3(4, 4, 100)
 
-[node name="LargeShipCore" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="LargeShip" type="RigidBody3D"]
 mass = 100.0
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_7uk6x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -34,60 +35,100 @@ mesh = SubResource("BoxMesh_72ita")
 MAX_HEALTH = 200
 
 [node name="ArmorModule" parent="." instance=ExtResource("3_xr7yb")]
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="ArmorModule2" parent="." instance=ExtResource("3_xr7yb")]
 transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, -1.57418, -4.6682, 0)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="ArmorModule3" parent="." instance=ExtResource("3_xr7yb")]
 transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -2.07912, 4.28951, 0)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="ArmorModule4" parent="." instance=ExtResource("3_xr7yb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1257, 0, -30)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="ArmorModule5" parent="." instance=ExtResource("3_xr7yb")]
 transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, -1.57418, -4.6682, -30)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="ArmorModule6" parent="." instance=ExtResource("3_xr7yb")]
 transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -2.07912, 4.28951, -30)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="PowerModule" parent="." instance=ExtResource("4_fs17n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -48)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="PowerModule5" parent="." instance=ExtResource("4_fs17n")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -52)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="PowerModule2" parent="." instance=ExtResource("4_fs17n")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4, -0.19928, -48.0294)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="PowerModule3" parent="." instance=ExtResource("4_fs17n")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4, -0.19928, -48.0294)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="PowerModule4" parent="." instance=ExtResource("4_fs17n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.19928, -48.0294)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="LaserModule" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="LaserModule2" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 50)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="LaserModule3" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 50)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="LaserModule4" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 50)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="LaserModule5" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 50)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="CannonModule" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 29.0368)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="CannonModule2" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 29)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="CannonModule3" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(2.98023e-08, 4.37114e-08, 1, 1, -8.88178e-16, -2.98023e-08, 0, 1, -4.37114e-08, -2, 0, 29)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="CannonModule4" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(-1, -1.02251e-15, -1.39091e-08, -1.39091e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, -2, 29)
+max_contacts_reported = 10
+contact_monitor = true

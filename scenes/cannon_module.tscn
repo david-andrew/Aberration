@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://krx06wutmib7"]
 
+[ext_resource type="Script" path="res://scripts/cannon_module.gd" id="1_2komf"]
 [ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="1_gvrty"]
-[ext_resource type="Script" path="res://scenes/cannon_module.gd" id="1_hxdcm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaaag"]
 albedo_color = Color(0, 0, 0, 1)
@@ -32,7 +32,9 @@ bottom_radius = 0.05
 height = 100.0
 
 [node name="CannonModule" type="RigidBody3D"]
-script = ExtResource("1_hxdcm")
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_2komf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_67ye5")

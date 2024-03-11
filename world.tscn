@@ -15,7 +15,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4b5v"]
-albedo_color = Color(0.858824, 0.705882, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
 material = SubResource("StandardMaterial3D_t4b5v")
@@ -54,12 +53,12 @@ size = Vector3(100, 100, 100)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 53, -195)
 
 [node name="TeamID" parent="LargeShip" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="LargeShip2" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 76, 53, -195)
 
 [node name="TeamID" parent="LargeShip2" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip3" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -114, -64, -195)
@@ -67,7 +66,14 @@ transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 
 [node name="TeamID" parent="LargeShip3" instance=ExtResource("6_pbg1v")]
 team = 0
 
+[node name="LargeShip4" parent="." instance=ExtResource("1_h85ca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -259.332)
+
+[node name="TeamID" parent="LargeShip4" instance=ExtResource("6_pbg1v")]
+
 [node name="Player" type="RigidBody3D" parent="."]
+max_contacts_reported = 10
+contact_monitor = true
 angular_damp = 1.0
 script = ExtResource("1_dojcp")
 
@@ -114,8 +120,12 @@ target = NodePath("../Player/CameraTarget")
 
 [node name="NewTestObstacle2" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 15.1525, -14.0386)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="Shield" parent="NewTestObstacle2" instance=ExtResource("9_ria2g")]
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="NewTestObstacle2"]
 node_a = NodePath("..")
@@ -123,6 +133,10 @@ node_b = NodePath("../Shield")
 
 [node name="NewTestObstacle3" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(1, 0, 0, 0, 0.547446, 0.836841, 0, -0.836841, 0.547446, -4.29016, 7.57625, 8.46046)
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="NewTestObstacle4" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(-0.464326, -0.754404, -0.463978, -0.843392, 0.536549, -0.0283761, 0.270354, 0.37814, -0.885392, 23.9953, 9.93048, 17.2644)
+max_contacts_reported = 10
+contact_monitor = true
