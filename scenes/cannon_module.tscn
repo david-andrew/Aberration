@@ -23,13 +23,13 @@ size = Vector3(0.25, 0.25, 1.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mjnl"]
 shading_mode = 0
-albedo_color = Color(0.298039, 0.298039, 1, 1)
+albedo_color = Color(0.815686, 0, 0.164706, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kcksl"]
 material = SubResource("StandardMaterial3D_5mjnl")
-top_radius = 0.05
-bottom_radius = 0.05
-height = 100.0
+top_radius = 0.005
+bottom_radius = 0.005
+height = 500.0
 
 [node name="CannonModule" type="RigidBody3D"]
 max_contacts_reported = 10
@@ -53,11 +53,7 @@ shape = SubResource("BoxShape3D_1pdn2")
 [node name="Health" parent="." instance=ExtResource("1_gvrty")]
 MAX_HEALTH = 5
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-target_position = Vector3(0, 0, -500)
-debug_shape_thickness = 5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50)
+[node name="TargetSight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -250)
 mesh = SubResource("CylinderMesh_kcksl")
+skeleton = NodePath("")

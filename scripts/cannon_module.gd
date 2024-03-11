@@ -4,7 +4,7 @@ var target: RigidBody3D = null
 var possible_targets: Array[RigidBody3D] = []
 var original_transform: Transform3D
 @export var MIN_ANGLE_WITH_SURFACE: float = PI/8
-var ray: RayCast3D
+var target_sight_laser: MeshInstance3D
 var original_parent
 
 const SHOOT_FREQUENCY = 20 #shots/second
@@ -25,9 +25,8 @@ func _ready():
 	target = get_tree().current_scene.find_child('Player')
 	original_transform = Transform3D(transform)
 	
-	ray = $RayCast3D
-	ray.enabled = false
-	ray.visible = false
+	target_sight_laser = $TargetSight
+	target_sight_laser.visible = false
 	
 	original_parent = get_parent()
 
@@ -56,46 +55,16 @@ func try_shoot_at_target():
 		return
 	
 	var expected_position = HelperFunctions.compute_expected_target_position(global_position, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
-		
-	# TODO: long term, this only seems to be correct for one orientation of turret
-	#check that target is at an aimable spot
-	#var dot = (original_transform.basis * (global_position - target.global_position)).normalized().dot(Vector3.FORWARD)
-
-	# check if cannon can point at the target
-	#if PI/2 - acos(dot) < MIN_ANGLE_WITH_SURFACE:
-		##print('target is out of angular range')
-		#transform.basis = original_transform.basis
-		#return
-
-	#var t = to_local(target.global_position).length() / BULLET_INITIAL_SPEED
-	#print('t is ', t, target.global_position, target.linear_velocity * t)
 	#look_at(target.global_position, Vector3.UP)
-	look_at(target.global_position, Vector3.UP)
-	#look_at(expected_position, Vector3.UP)
-
+	look_at(expected_position, Vector3.UP)
 
 	# check if cannon is beyond max rotation
 	if transform.basis.z.dot(original_transform.basis.z) < 0.25:
-		ray.visible = false
+		target_sight_laser.visible = false
 		return
-	
-	##draw a raycast from the turret tip and check if it collides with the player
-	ray.visible = false
-	ray.force_raycast_update()
-	var collider = ray.get_collider()
-	if not collider:
-		ray.visible = false
-		return
-	
-	#ray.visible = collider == target
-	#if collider == target:
-		#print('raycast hitting target ', target)
-	#else:
-		#print('raycast not hitting target ', target)
-	
-	if collider == target:
-		#ray.visible = true
-		shoot_bullet()
+	target_sight_laser.visible = true
+	shoot_bullet()
+	return
 	
 		
 func shoot_bullet():
@@ -105,8 +74,10 @@ func shoot_bullet():
 		bullet.global_basis = global_basis
 		bullet.position = global_position + (target.global_position - global_position).normalized() * 2 + Vector3(randf(), randf(), randf()) * 0.5
 		bullet.global_position -= 2*global_transform.basis.z
-		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z + Vector3(randfn(0,1), randfn(0,1), randfn(0,1))
+		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z + Vector3(randfn(0,1), randfn(0,1), randfn(0,1))*0.5
 		last_shot_time = Time.get_ticks_msec()
 		total_bullets_shot += 1
+		
+		#apply_central_impulse(BULLET_INITIAL_SPEED * bullet.mass/50 * Vector3.FORWARD * basis)
 
 	

@@ -48,6 +48,8 @@ albedo_color = Color(0.968627, 0, 0.894118, 1)
 material = SubResource("StandardMaterial3D_aj35o")
 
 [node name="LaserModule" type="RigidBody3D"]
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_tgvav")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

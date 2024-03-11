@@ -6,36 +6,24 @@ func compute_expected_target_position(source_pos: Vector3, shot_speed: float, ta
 	var relative_pos = target_pos - source_pos
 	
 	#DEBUG shorter not quite correct version
-	var t = relative_pos.length() / shot_speed
+	#var t = relative_pos.length() / shot_speed
 	#print('calculated t: ', t)
-	return target_pos + target_vel * t
+	#return target_pos + target_vel * t
 	
-	#
-	#
-	##all values are relative to global. result will also be global
-	#var A = target_vel.length_squared() - shot_speed*shot_speed
-	#var B = 2*target_vel.dot(relative_pos)
-	#var C = relative_pos.length_squared()
-#
-	#var discriminant = B*B - 4*A*C
-#
-	#if discriminant < 0:
-		#return target_pos
-#
-	#var t = (-B + sqrt(discriminant)) / (2*A)
-	##var t2 = (-B - sqrt(discriminant)) / (2*A)
-##
-	### take the smallest positive value
-	##var t
-	##if t2 > 0:
-		##t = t1
-	##elif t1 > 0:
-		##t = t1
-	##else:
-		##return target_pos
-	##print('computed t ', t)
-	#
-	#return target_pos + target_vel*t
-	#
-	#
-	#return Vector3.ZERO
+	
+	
+	#all values are relative to global. result will also be global
+	var A = target_vel.length_squared() - shot_speed*shot_speed
+	var B = 2*target_vel.dot(relative_pos)
+	var C = relative_pos.length_squared()
+
+	var discriminant = B*B - 4*A*C
+
+	if discriminant < 0:
+		return target_pos
+
+	var t1 = (-B + sqrt(discriminant)) / (2*A)
+	var t2 = (-B - sqrt(discriminant)) / (2*A)
+	var t = max(t1,t2)
+	
+	return target_pos + target_vel*t

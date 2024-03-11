@@ -115,20 +115,12 @@ contact_monitor = true
 
 [node name="CannonModule" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 29.0368)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="CannonModule2" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 29)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="CannonModule3" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(2.98023e-08, 4.37114e-08, 1, 1, -8.88178e-16, -2.98023e-08, 0, 1, -4.37114e-08, -2, 0, 29)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="CannonModule4" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(-1, -1.02251e-15, -1.39091e-08, -1.39091e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, -2, 29)
-max_contacts_reported = 10
-contact_monitor = true
