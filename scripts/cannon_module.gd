@@ -1,7 +1,7 @@
 extends ShipModule
 
-var target: Node3D = null
-var possible_targets: Array[Node3D] = []
+var target: RigidBody3D = null
+var possible_targets: Array[RigidBody3D] = []
 var original_transform: Transform3D
 @export var MIN_ANGLE_WITH_SURFACE: float = PI/8
 var ray: RayCast3D
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	try_shoot_at_target()
 
 
-func set_targets(targets:Array[Node3D]):
+func set_targets(targets:Array[RigidBody3D]):
 	#TODO: for use by control modules
 	pass
 
@@ -54,6 +54,8 @@ func try_shoot_at_target():
 	
 	if not target:
 		return
+	
+	var expected_position = HelperFunctions.compute_expected_target_position(global_position, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
 		
 	# TODO: long term, this only seems to be correct for one orientation of turret
 	#check that target is at an aimable spot
@@ -65,8 +67,11 @@ func try_shoot_at_target():
 		#transform.basis = original_transform.basis
 		#return
 
-
+	#var t = to_local(target.global_position).length() / BULLET_INITIAL_SPEED
+	#print('t is ', t, target.global_position, target.linear_velocity * t)
+	#look_at(target.global_position, Vector3.UP)
 	look_at(target.global_position, Vector3.UP)
+	#look_at(expected_position, Vector3.UP)
 
 
 	# check if cannon is beyond max rotation
