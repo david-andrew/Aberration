@@ -168,7 +168,7 @@ node_a = NodePath("..")
 node_b = NodePath("../Shield")
 
 [node name="NewTestObstacle3" parent="." instance=ExtResource("7_6bovt")]
-transform = Transform3D(1, 0, 0, 0, 0.547446, 0.836841, 0, -0.836841, 0.547446, 0, 7.57625, 8.46046)
+transform = Transform3D(1, 0, 0, 0, 0.547446, 0.836841, 0, -0.836841, 0.547446, -4.29016, 7.57625, 8.46046)
 
 [node name="NewTestObstacle4" parent="." instance=ExtResource("7_6bovt")]
 transform = Transform3D(-0.464326, -0.754404, -0.463978, -0.843392, 0.536549, -0.0283761, 0.270354, 0.37814, -0.885392, 23.9953, 9.93048, 17.2644)
