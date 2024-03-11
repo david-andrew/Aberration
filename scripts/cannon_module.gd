@@ -4,7 +4,7 @@ var target: RigidBody3D = null
 var possible_targets: Array[RigidBody3D] = []
 var original_transform: Transform3D
 @export var MIN_ANGLE_WITH_SURFACE: float = PI/8
-var target_sight_laser: MeshInstance3D
+#var target_sight_laser: MeshInstance3D
 var original_parent
 
 const SHOOT_FREQUENCY = 20 #shots/second
@@ -25,8 +25,8 @@ func _ready():
 	target = get_tree().current_scene.find_child('Player')
 	original_transform = Transform3D(transform)
 	
-	target_sight_laser = $TargetSight
-	target_sight_laser.visible = false
+	#target_sight_laser = $TargetSight
+	#target_sight_laser.visible = false
 	
 	original_parent = get_parent()
 
@@ -60,9 +60,9 @@ func try_shoot_at_target():
 
 	# check if cannon is beyond max rotation
 	if transform.basis.z.dot(original_transform.basis.z) < 0.25:
-		target_sight_laser.visible = false
+		#target_sight_laser.visible = false
 		return
-	target_sight_laser.visible = true
+	#target_sight_laser.visible = true
 	shoot_bullet()
 	return
 	
@@ -77,7 +77,4 @@ func shoot_bullet():
 		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z + Vector3(randfn(0,1), randfn(0,1), randfn(0,1))*0.5
 		last_shot_time = Time.get_ticks_msec()
 		total_bullets_shot += 1
-		
-		#apply_central_impulse(BULLET_INITIAL_SPEED * bullet.mass/50 * Vector3.FORWARD * basis)
 
-	
