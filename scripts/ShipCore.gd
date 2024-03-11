@@ -2,11 +2,19 @@ extends RigidBody3D
 class_name ShipCore
 
 @export var player_controlled: bool = false
+#var teamid: TeamID
+var enemies: Array[RigidBody3D] = []
 
 func _ready():
 	# ensure that the teamID is the first node
-	var teamID = find_child("TeamID")
+	var teamID:TeamID = find_child("TeamID")
 	move_child(teamID, 0)
+	
+	# mark targets for all turrets
+	enemies = teamID.get_all_enemy_units()
+	for child in get_children():
+		if is_instance_valid(child) and child is CannonModule:
+			child.set_targets(enemies)
 
 func destroy():
 	# attach any child ShipModules to the root so that they remain present in the game

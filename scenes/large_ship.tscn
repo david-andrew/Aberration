@@ -32,7 +32,7 @@ shape = SubResource("BoxShape3D_i7nfg")
 mesh = SubResource("BoxMesh_72ita")
 
 [node name="Health" parent="." instance=ExtResource("2_q7qwa")]
-MAX_HEALTH = 200
+MAX_HEALTH = 2000
 
 [node name="ArmorModule" parent="." instance=ExtResource("3_xr7yb")]
 max_contacts_reported = 10
@@ -90,28 +90,18 @@ contact_monitor = true
 
 [node name="LaserModule" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="LaserModule2" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 50)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="LaserModule3" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 50)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="LaserModule4" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 50)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="LaserModule5" parent="." instance=ExtResource("5_4k6wk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 50)
-max_contacts_reported = 10
-contact_monitor = true
 
 [node name="CannonModule" parent="." instance=ExtResource("6_yv72x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 29.0368)

@@ -1,4 +1,5 @@
 extends ShipModule
+class_name CannonModule
 
 var target: RigidBody3D = null
 var possible_targets: Array[RigidBody3D] = []
@@ -14,7 +15,8 @@ const BULLET = preload("res://scenes/bullet.tscn")
 var total_bullets_shot = 0
 
 
-
+const TIME_TO_REEVALUATE_TARGET_MS = 1000 #if the target remains valid the whole time
+var target_selection_time = Time.get_ticks_msec() + int(randf() * TIME_TO_REEVALUATE_TARGET_MS)
 
 
 func _ready():
@@ -37,16 +39,40 @@ func _physics_process(delta):
 
 
 func set_targets(targets:Array[RigidBody3D]):
-	#TODO: for use by control modules
-	pass
+	possible_targets = targets
 
 func select_best_target():
-	if len(possible_targets) == 0:
+	# only select a new target randomly every 10 seconds
+	if is_instance_valid(target) and Time.get_ticks_msec() - target_selection_time < TIME_TO_REEVALUATE_TARGET_MS:
 		return
-	if not target:
-		target = possible_targets[0]
 	
-	#TODO: iterate over targets, select the closest (ensuring that the turret can point at it)
+	target_selection_time = Time.get_ticks_msec()
+
+	if len(possible_targets) == 0:
+		target = null
+		return
+
+	var best_target = null
+	var best_score = -999999999
+	for candidate in possible_targets:
+		if not is_instance_valid(candidate):
+			continue
+		var candidate_score = score_target(candidate)
+		if candidate_score > best_score:
+			best_score = candidate_score
+			best_target = candidate
+
+	target = best_target
+
+func score_target(target:RigidBody3D) -> float:
+	var expected_position = HelperFunctions.compute_expected_target_position(global_position, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
+	var local_pos = original_transform * expected_position
+	
+	if local_pos.dot(Vector3.FORWARD) < 0.25: #can't even point at this target
+		return 0
+	
+	#score is just negative distance, to prioritize closer targets
+	return -expected_position.length_squared()
 
 func try_shoot_at_target():
 	if get_parent() != original_parent:

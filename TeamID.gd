@@ -45,3 +45,17 @@ func _ready():
 			health = sibling.find_child('Health')
 			if health:
 				health.initial_color = mat.albedo_color
+
+func get_all_enemy_units() -> Array[RigidBody3D]:
+	var enemies: Array[RigidBody3D] = []
+	var children = GameMaster.current_scene.get_children()
+	for child in children:
+		if not is_instance_valid(child) or not (child is ShipCore or child.name=='Player'):
+			continue
+		var teamid = child.find_child('TeamID')
+		if not teamid or not teamid is TeamID:
+			continue
+		if teamid.team != team:
+			enemies.append(child)
+			
+	return enemies
