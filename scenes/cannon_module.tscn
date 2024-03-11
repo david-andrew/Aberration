@@ -53,8 +53,7 @@ MAX_HEALTH = 5
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-exclude_parent = false
-target_position = Vector3(0, 0, -200)
+target_position = Vector3(0, 0, -500)
 debug_shape_thickness = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]

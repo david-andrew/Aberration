@@ -6,6 +6,7 @@ var power_modules: Array[PowerModule]
 var laser
 var command_shoot: bool = true
 var original_parent
+var last_try_had_enough_power:bool=false
 
 func _ready():
 	super._ready()
@@ -20,6 +21,10 @@ func _ready():
 	original_parent = get_parent()
 
 func shoot(physics_delta):
+	#only try to shoot again after a random number of frames
+	if not last_try_had_enough_power and randf() < 0.9:
+		return
+	
 	# randomly select a battery from the list to draw power from (ensuring it is valid and a a sibling)
 	# go through all in list until we find one. otherwise deactivate firing
 	# if firing active, take an amount of power from the battery
@@ -37,6 +42,7 @@ func shoot(physics_delta):
 				break
 	
 	laser.visible = can_shoot
+	last_try_had_enough_power = can_shoot
 	if not can_shoot and power_taken > 0:
 		#distribute any unused power to all the batteries
 		for module in power_modules:

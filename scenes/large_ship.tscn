@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://comag3ftrfm87"]
+
+[ext_resource type="Script" path="res://scripts/ShipCore.gd" id="1_7uk6x"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="2_q7qwa"]
+[ext_resource type="PackedScene" uid="uid://br7h0hapmvd3y" path="res://scenes/armor_module.tscn" id="3_xr7yb"]
+[ext_resource type="PackedScene" uid="uid://b4xvtwo36e6ho" path="res://scenes/power_module.tscn" id="4_fs17n"]
+[ext_resource type="PackedScene" uid="uid://bmp7yhbooljq0" path="res://scenes/laser_module.tscn" id="5_4k6wk"]
+[ext_resource type="PackedScene" uid="uid://krx06wutmib7" path="res://scenes/cannon_module.tscn" id="6_yv72x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7nfg"]
+size = Vector3(4, 4, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ohm0"]
+resource_local_to_scene = true
+albedo_color = Color(0.309804, 0.545098, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_72ita"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0ohm0")
+size = Vector3(4, 4, 100)
+
+[node name="LargeShipCore" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mass = 100.0
+script = ExtResource("1_7uk6x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_i7nfg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_72ita")
+
+[node name="Health" parent="." instance=ExtResource("2_q7qwa")]
+MAX_HEALTH = 200
+
+[node name="ArmorModule" parent="." instance=ExtResource("3_xr7yb")]
+
+[node name="ArmorModule2" parent="." instance=ExtResource("3_xr7yb")]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, -1.57418, -4.6682, 0)
+
+[node name="ArmorModule3" parent="." instance=ExtResource("3_xr7yb")]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -2.07912, 4.28951, 0)
+
+[node name="ArmorModule4" parent="." instance=ExtResource("3_xr7yb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1257, 0, -30)
+
+[node name="ArmorModule5" parent="." instance=ExtResource("3_xr7yb")]
+transform = Transform3D(0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, -1.57418, -4.6682, -30)
+
+[node name="ArmorModule6" parent="." instance=ExtResource("3_xr7yb")]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, -2.07912, 4.28951, -30)
+
+[node name="PowerModule" parent="." instance=ExtResource("4_fs17n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -48)
+
+[node name="PowerModule5" parent="." instance=ExtResource("4_fs17n")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -52)
+
+[node name="PowerModule2" parent="." instance=ExtResource("4_fs17n")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 4, -0.19928, -48.0294)
+
+[node name="PowerModule3" parent="." instance=ExtResource("4_fs17n")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -4, -0.19928, -48.0294)
+
+[node name="PowerModule4" parent="." instance=ExtResource("4_fs17n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.19928, -48.0294)
+
+[node name="LaserModule" parent="." instance=ExtResource("5_4k6wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="LaserModule2" parent="." instance=ExtResource("5_4k6wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 50)
+
+[node name="LaserModule3" parent="." instance=ExtResource("5_4k6wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 50)
+
+[node name="LaserModule4" parent="." instance=ExtResource("5_4k6wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 50)
+
+[node name="LaserModule5" parent="." instance=ExtResource("5_4k6wk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 50)
+
+[node name="CannonModule" parent="." instance=ExtResource("6_yv72x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 29.0368)
+
+[node name="CannonModule2" parent="." instance=ExtResource("6_yv72x")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 29)
+
+[node name="CannonModule3" parent="." instance=ExtResource("6_yv72x")]
+transform = Transform3D(2.98023e-08, 4.37114e-08, 1, 1, -8.88178e-16, -2.98023e-08, 0, 1, -4.37114e-08, -2, 0, 29)
+
+[node name="CannonModule4" parent="." instance=ExtResource("6_yv72x")]
+transform = Transform3D(-1, -1.02251e-15, -1.39091e-08, -1.39091e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, -2, 29)

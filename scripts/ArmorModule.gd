@@ -1,1 +1,2 @@
 extends ShipModule
+class_name ArmorModule

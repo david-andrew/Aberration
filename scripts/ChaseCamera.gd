@@ -43,8 +43,8 @@ func _physics_process(delta):
 	#print('delta velocity: ', linear_velocity - target.linear_velocity)
 	#print('global velocity vs linear velocity: ', (linear_velocity - test_velocity))
 
-	# align the camera frame with the target_parent's frame
-	transform.basis = target_parent.get_global_transform().basis
+	# align the camera frame with the target's frame #target_parent's frame
+	transform.basis = target.global_transform.basis
 	#TODO: two things:
 	#      - this should look at where the target is going based on its velocity
 	#      - instead of snapping the basis to exactly be the target's, it could also be spring/damper based

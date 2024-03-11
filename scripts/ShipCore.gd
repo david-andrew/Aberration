@@ -3,6 +3,11 @@ class_name ShipCore
 
 @export var player_controlled: bool = false
 
+func _ready():
+	# ensure that the teamID is the first node
+	var teamID = find_child("TeamID")
+	move_child(teamID, 0)
+
 func destroy():
 	# attach any child ShipModules to the root so that they remain present in the game
 	var new_parent = get_tree().get_current_scene()

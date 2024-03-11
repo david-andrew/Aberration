@@ -95,12 +95,13 @@ func try_shoot_at_target():
 		
 func shoot_bullet():
 	if Time.get_ticks_msec() - last_shot_time > (1000 / SHOOT_FREQUENCY):
+		print('shooting at player ', Time.get_ticks_msec())
 		var bullet = BULLET.instantiate()
 		GameMaster.current_scene.add_child(bullet)
 		bullet.global_basis = global_basis
 		bullet.position = global_position + (target.global_position - global_position).normalized() * 2 + Vector3(randf(), randf(), randf()) * 0.5
 		bullet.global_position -= 2*global_transform.basis.z
-		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z + Vector3(randf(), randf(), randf()) * 2
+		bullet.linear_velocity = linear_velocity + BULLET_INITIAL_SPEED * -global_transform.basis.z + Vector3(randfn(0,1), randfn(0,1), randfn(0,1))
 		last_shot_time = Time.get_ticks_msec()
 		total_bullets_shot += 1
 

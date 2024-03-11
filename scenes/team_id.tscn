@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct218m1oc85t8"]
+
+[ext_resource type="Script" path="res://TeamID.gd" id="1_1678s"]
+
+[node name="TeamID" type="Node"]
+script = ExtResource("1_1678s")
+team = 1

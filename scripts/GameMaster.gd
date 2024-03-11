@@ -3,7 +3,7 @@ class_name GameMasterClass
 
 
 
-const MAX_BULLETS = 225
+const MAX_BULLETS = 1000
 var total_bullets = 0 #keep track of the number of bullets in the scene
 var bullet_id = 0     #keep track of unique ids for bullets
 var current_scene = null
