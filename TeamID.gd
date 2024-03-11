@@ -20,7 +20,10 @@ func _ready():
 	var health: Health
 	mat = parent.find_child("MeshInstance3D").get_active_material(0)
 	if team == Team.MAGENTA:
-		mat.albedo_color = Color.WHITE
+		if parent.name == "Player":
+			mat.albedo_color = magenta
+		else:
+			mat.albedo_color = Color.WHITE
 	elif team == Team.GREEN:
 		mat.albedo_color = green
 	elif team == Team.GRAY:
