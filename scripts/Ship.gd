@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 
-const translation_strength = 1.0
+const translation_strength = 3.0
 const rotation_strength = 0.5
 
 enum WeaponType {BULLET, LASER}
@@ -77,19 +77,19 @@ func _physics_process(delta):
 		apply_impulse(global_transform.basis.x * delta * translation_strength)
 
 	# translate up
-	if Input.is_action_pressed("w"):
+	if Input.is_action_pressed("shift"):
 		apply_impulse(global_transform.basis.y * delta * translation_strength)
 	
 	# translate down
-	if Input.is_action_pressed("s"):
+	if Input.is_action_pressed("ctrl"):
 		apply_impulse(-global_transform.basis.y * delta * translation_strength)
 
 	# throttle
-	if Input.is_action_pressed("shift"):
+	if Input.is_action_pressed("w"):
 		#throttle = min(throttle + d_throttle * delta, max_throttle)
-		apply_impulse(-global_transform.basis.z * delta * translation_strength*5)
+		apply_impulse(-global_transform.basis.z * delta * translation_strength*2)
 		
-	if Input.is_action_pressed("ctrl"):
+	if Input.is_action_pressed("s"):
 		#throttle = max(throttle - d_throttle * delta, min_throttle)
 		apply_impulse(global_transform.basis.z * delta * translation_strength)
 	#if Input.is_action_just_pressed('space'):

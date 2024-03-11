@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://krx06wutmib7"]
+
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="1_gvrty"]
+[ext_resource type="Script" path="res://scenes/cannon_module.gd" id="1_hxdcm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaaag"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_67ye5"]
+material = SubResource("StandardMaterial3D_jaaag")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3onhs"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8a3bn"]
+material = SubResource("StandardMaterial3D_3onhs")
+size = Vector3(0.25, 0.25, 1.25)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lrjm1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1pdn2"]
+size = Vector3(0.25, 0.25, 1.25)
+
+[node name="CannonModule" type="RigidBody3D"]
+script = ExtResource("1_hxdcm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_67ye5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("BoxMesh_8a3bn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_lrjm1")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_1pdn2")
+
+[node name="Health" parent="." instance=ExtResource("1_gvrty")]
+MAX_HEALTH = 5

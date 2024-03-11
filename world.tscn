@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=24 format=3 uid="uid://dwyh17swso2yf"]
 
 [ext_resource type="Script" path="res://scripts/Ship.gd" id="1_dojcp"]
 [ext_resource type="PackedScene" uid="uid://d00ceoa2orkku" path="res://scenes/large_ship_core.tscn" id="1_xh38e"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
 [ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="4_c62u1"]
 [ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="4_mhwvw"]
+[ext_resource type="PackedScene" uid="uid://krx06wutmib7" path="res://scenes/cannon_module.tscn" id="5_0kugh"]
 [ext_resource type="PackedScene" uid="uid://bmp7yhbooljq0" path="res://scenes/laser_module.tscn" id="5_ds7nv"]
 [ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="7_3p5ke"]
 [ext_resource type="PackedScene" uid="uid://d0cn0wfyxb1kj" path="res://scenes/new_test_obstacle.tscn" id="7_6bovt"]
@@ -101,6 +102,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 50)
 
 [node name="LaserModule5" parent="LargeShipCore" instance=ExtResource("5_ds7nv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 50)
+
+[node name="CannonModule" parent="LargeShipCore" instance=ExtResource("5_0kugh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 29.0368)
+
+[node name="CannonModule2" parent="LargeShipCore" instance=ExtResource("5_0kugh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 29)
+
+[node name="CannonModule3" parent="LargeShipCore" instance=ExtResource("5_0kugh")]
+transform = Transform3D(2.98023e-08, 4.37114e-08, 1, 1, -8.88178e-16, -2.98023e-08, 0, 1, -4.37114e-08, -2, 0, 29)
+
+[node name="CannonModule4" parent="LargeShipCore" instance=ExtResource("5_0kugh")]
+transform = Transform3D(-1, -1.02251e-15, -1.39091e-08, -1.39091e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, -2, 29)
 
 [node name="Player" type="RigidBody3D" parent="."]
 angular_damp = 1.0
