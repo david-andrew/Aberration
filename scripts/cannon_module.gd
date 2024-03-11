@@ -22,16 +22,17 @@ func _ready():
 	link_module_to_core(joint)
 
 	# DEBUG, replace with actual target
-	target = get_tree().current_scene.find_child('Player')
-	original_transform = Transform3D(transform)
+	#target = get_tree().current_scene.find_child('Player')
+
 	
 	#target_sight_laser = $TargetSight
 	#target_sight_laser.visible = false
 	
 	original_parent = get_parent()
-
+	original_transform = Transform3D(transform) # for calculating allowed deviation for aiming
 
 func _physics_process(delta):
+	select_best_target()
 	try_shoot_at_target()
 
 
