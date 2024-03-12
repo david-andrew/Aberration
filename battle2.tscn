@@ -1,0 +1,206 @@
+[gd_scene load_steps=15 format=3 uid="uid://bt7osgrpvasxl"]
+
+[ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_5pbcc"]
+[ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="2_5ta6q"]
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="3_onkh0"]
+[ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="4_8t4wl"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="5_sqyr4"]
+[ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="6_5njx6"]
+[ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="7_f3ya5"]
+[ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="8_a85b1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4b5v"]
+albedo_color = Color(0.31, 0.545, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
+material = SubResource("StandardMaterial3D_t4b5v")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6eqga"]
+panorama = ExtResource("7_f3ya5")
+
+[sub_resource type="Sky" id="Sky_u6aip"]
+sky_material = SubResource("PanoramaSkyMaterial_6eqga")
+
+[sub_resource type="Environment" id="Environment_4wuuw"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_u6aip")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.05
+
+[node name="World" type="Node3D"]
+
+[node name="LargeShip" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.965926, -7.45058e-09, 0.258819, 0.0669873, 0.965926, -0.25, -0.25, 0.258819, 0.933013, -149.93, 52.3459, -1359.73)
+
+[node name="TeamID" parent="LargeShip" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip5" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -231.153, 99.0077, -1609)
+
+[node name="TeamID" parent="LargeShip5" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip6" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -131.153, 168.008, -1609)
+
+[node name="TeamID" parent="LargeShip6" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip7" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -131.153, 251.685, -1739.91)
+
+[node name="TeamID" parent="LargeShip7" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip8" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.808013, 0.433013, -0.399519, -0.25, 0.866025, 0.433013, 0.533494, -0.25, 0.808013, 40.8468, -9.99228, -2033.37)
+
+[node name="TeamID" parent="LargeShip8" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip2" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 61.8468, 99.0077, -1498)
+
+[node name="TeamID" parent="LargeShip2" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip13" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.961516, -0.12941, -0.242362, -0.00425926, 0.875, -0.484104, 0.274715, 0.466506, 0.840775, -282.8, 156.895, -1333.61)
+
+[node name="TeamID" parent="LargeShip13" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip14" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.965926, 0, -0.258819, -0.0669873, 0.965926, -0.25, 0.25, 0.258819, 0.933013, -228.508, 268.349, -1569.28)
+
+[node name="TeamID" parent="LargeShip14" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip15" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(2.08616e-07, 0, -1, -0.258819, 0.965926, -5.39939e-08, 0.965926, 0.258819, 2.01508e-07, -141.906, 322.057, -1503.12)
+
+[node name="TeamID" parent="LargeShip15" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip16" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.0580122, 0.433013, -0.899519, -0.491632, 0.771811, 0.403244, 0.868869, 0.465625, 0.168108, -76.4526, 432.225, -1590.97)
+
+[node name="TeamID" parent="LargeShip16" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip17" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.433013, 0.5, -0.75, -0.465625, 0.836516, 0.288849, 0.771812, 0.224144, 0.595035, 219.234, 222.983, -1821.11)
+
+[node name="TeamID" parent="LargeShip17" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip18" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.707107, 0, -0.707107, -0.183013, 0.965926, -0.183013, 0.683013, 0.258819, 0.683013, -30.2629, 205.552, -1334.92)
+
+[node name="TeamID" parent="LargeShip18" instance=ExtResource("2_5ta6q")]
+
+[node name="LargeShip9" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 61.8468, 240.008, -79.4564)
+
+[node name="TeamID" parent="LargeShip9" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip10" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.5, -3.08008e-09, -0.866025, 0.224144, 0.965926, -0.129409, 0.836516, -0.258819, -0.482963, 61.8468, 240.008, 201.544)
+
+[node name="TeamID" parent="LargeShip10" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip11" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.974444, 0.224144, -0.0147546, 0.224144, 0.965926, -0.129409, -0.0147546, -0.129409, -0.991481, 61.8468, 274.008, 104.544)
+
+[node name="TeamID" parent="LargeShip11" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip12" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.851271, 0.12941, -0.508519, 0.224144, 0.965926, -0.129409, 0.474444, -0.224144, -0.851271, 61.8468, 147.008, 104.544)
+
+[node name="TeamID" parent="LargeShip12" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip3" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -128.153, -17.9923, 73.5436)
+
+[node name="TeamID" parent="LargeShip3" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip4" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1532, 46.0077, 9.21161)
+
+[node name="TeamID" parent="LargeShip4" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip19" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.711517, 0.0669873, -0.699469, 0.12941, 0.965926, 0.224144, 0.69065, -0.25, 0.678604, 103.152, 549.686, 43.6702)
+
+[node name="TeamID" parent="LargeShip19" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip20" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.677077, 0.12941, -0.724444, 0.433013, 0.866026, -0.25, 0.595035, -0.482963, -0.642402, 32.9024, 447.414, 305.847)
+
+[node name="TeamID" parent="LargeShip20" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip21" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.922537, 0.313564, 0.22495, 0.212688, 0.89952, -0.381614, -0.322007, -0.304209, -0.896531, -151.57, 455.15, 206.844)
+
+[node name="TeamID" parent="LargeShip21" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip22" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(-0.925861, 0.245741, -0.287043, 0.339302, 0.875, -0.345325, 0.166301, -0.417117, -0.893509, 50.9226, 332.477, 238.594)
+
+[node name="TeamID" parent="LargeShip22" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip23" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.997717, 0.0669873, 0.00851846, -0.0669873, 0.965926, 0.25, 0.00851862, -0.25, 0.968208, -135.906, 165.076, 201.746)
+
+[node name="TeamID" parent="LargeShip23" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="LargeShip24" parent="." instance=ExtResource("1_5pbcc")]
+transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, -5.42048, 210.245, 155.228)
+
+[node name="TeamID" parent="LargeShip24" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="Player" type="RigidBody3D" parent="."]
+max_contacts_reported = 10
+contact_monitor = true
+angular_damp = 1.0
+script = ExtResource("3_onkh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("BoxShape3D_278ud")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("BoxMesh_l6wpm")
+
+[node name="CameraTarget" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
+script = ExtResource("4_8t4wl")
+
+[node name="Health" parent="Player" instance=ExtResource("5_sqyr4")]
+MAX_HEALTH = 1000
+
+[node name="Laser" parent="Player" instance=ExtResource("6_5njx6")]
+
+[node name="TeamID" parent="Player" instance=ExtResource("2_5ta6q")]
+team = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.935301, -0.0408648, 0.351485, 0.301389, -0.612465, 0.730788, 0.185409, 0.789441, 0.585156, -1.73873, 1.67446, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4wuuw")
+
+[node name="ChaseCamera" type="RigidBody3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.71112)
+script = ExtResource("8_a85b1")
+target = NodePath("../Player/CameraTarget")
+
+[node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
