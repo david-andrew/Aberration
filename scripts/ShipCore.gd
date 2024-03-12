@@ -58,13 +58,15 @@ func avoid_other_ships():
 			continue
 		var diff = ally.global_position - global_position
 		var length = diff.length()
-		apply_central_force((diff / length) * (length - 200))
+		#apply_central_force((diff / length) * max((length - 200), 100))
+		apply_central_force((diff / length) * min((length - 200), 50))
 	for enemy in enemies:
 		if not is_instance_valid(enemy):
 			continue
 		var diff = enemy.global_position - global_position
 		var length = diff.length()
-		apply_central_force((diff / length) * (length - 200))
+		#apply_central_force((diff / length) * max((length - 200), 100))
+		apply_central_force((diff / length) * min((length - 200), 50))
 		
 
 
