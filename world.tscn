@@ -15,7 +15,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4b5v"]
-albedo_color = Color(0.31, 0.545, 0, 1)
+albedo_color = Color(0.55, 0, 0.534, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
 material = SubResource("StandardMaterial3D_t4b5v")
@@ -54,37 +54,31 @@ size = Vector3(100, 100, 100)
 transform = Transform3D(0.965926, -7.45058e-09, 0.258819, 0.0669873, 0.965926, -0.25, -0.25, 0.258819, 0.933013, -149.93, 52.3459, -17.7345)
 
 [node name="TeamID" parent="LargeShip" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip5" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -231.153, 99.0077, -267)
 
 [node name="TeamID" parent="LargeShip5" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip6" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -131.153, 168.008, -267)
 
 [node name="TeamID" parent="LargeShip6" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip7" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -131.153, 251.685, -397.906)
 
 [node name="TeamID" parent="LargeShip7" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip8" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.808013, 0.433013, -0.399519, -0.25, 0.866025, 0.433013, 0.533494, -0.25, 0.808013, 40.8468, -9.99228, -691.366)
 
 [node name="TeamID" parent="LargeShip8" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip2" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 61.8468, 99.0077, -156)
 
 [node name="TeamID" parent="LargeShip2" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="LargeShip9" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 61.8468, 240.008, -309)
