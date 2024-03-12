@@ -40,17 +40,17 @@ func handle_collisions():
 		if collider.has_method('give_damage'):
 			damage(collider.give_damage())
 			damagers.append(collider)
-	if len(damagers) > 0:
-		print('damage: ', damagers)
+	#if len(damagers) > 0:
+		#print('damage: ', damagers)
 
 func damage(pts: int):
 	health -= pts
-	print('health is: ', health)
+	#print('health is: ', health)
 
 	# interpolate the color based on the health
 	if MATERIAL:
 		MATERIAL.albedo_color = initial_color.lerp(Color(0, 0, 0, initial_color.a), 1.0 - (float(health - 1) / (MAX_HEALTH - 1)))
-		print('color is: ', MATERIAL.albedo_color)
+		#print('color is: ', MATERIAL.albedo_color)
 	
 	if health <= 0:
 		if parent.has_method('destroy'):

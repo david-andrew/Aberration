@@ -4,6 +4,10 @@ class_name ShipCore
 @export var player_controlled: bool = false
 #var teamid: TeamID
 var enemies: Array[RigidBody3D] = []
+var thrusters: ThrustModule
+
+#DEBUG
+var player
 
 func _ready():
 	# ensure that the teamID is the first node
@@ -15,6 +19,20 @@ func _ready():
 	for child in get_children():
 		if is_instance_valid(child) and child is CannonModule:
 			child.set_targets(enemies)
+			
+	thrusters = $ThrustModule
+	
+	#DEBUG translate towards the player
+	player = GameMaster.current_scene.find_child('Player')
+	print('found player: ', player)
+
+func _physics_process(delta):
+	if not is_instance_valid(player):
+		return
+	thrusters.translate_towards(player.global_position)
+	#thrusters.point_towards(player.global_position)
+	pass
+
 
 func destroy():
 	# attach any child ShipModules to the root so that they remain present in the game

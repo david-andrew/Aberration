@@ -15,7 +15,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4b5v"]
-albedo_color = Color(0.55, 0, 0.534, 1)
+albedo_color = Color(0.31, 0.545, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
 material = SubResource("StandardMaterial3D_t4b5v")
@@ -84,26 +84,31 @@ team = 0
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 61.8468, 99.0077, -156)
 
 [node name="TeamID" parent="LargeShip2" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="LargeShip9" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 61.8468, 240.008, -309)
 
 [node name="TeamID" parent="LargeShip9" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="LargeShip10" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(-0.5, -3.08008e-09, -0.866025, 0.224144, 0.965926, -0.129409, 0.836516, -0.258819, -0.482963, 61.8468, 240.008, -28)
 
 [node name="TeamID" parent="LargeShip10" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="LargeShip11" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(-0.974444, 0.224144, -0.0147546, 0.224144, 0.965926, -0.129409, -0.0147546, -0.129409, -0.991481, 61.8468, 274.008, -125)
 
 [node name="TeamID" parent="LargeShip11" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="LargeShip12" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(-0.851271, 0.12941, -0.508519, 0.224144, 0.965926, -0.129409, 0.474444, -0.224144, -0.851271, 61.8468, 147.008, -125)
 
 [node name="TeamID" parent="LargeShip12" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="LargeShip3" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -128.153, -17.9923, -156)
@@ -115,6 +120,7 @@ team = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1532, 46.0077, -220.332)
 
 [node name="TeamID" parent="LargeShip4" instance=ExtResource("6_pbg1v")]
+team = 0
 
 [node name="Player" type="RigidBody3D" parent="."]
 max_contacts_reported = 10
@@ -138,7 +144,7 @@ MAX_HEALTH = 1000
 [node name="Laser" parent="Player" instance=ExtResource("4_c62u1")]
 
 [node name="TeamID" parent="Player" instance=ExtResource("6_pbg1v")]
-team = 2
+team = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
