@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameMaster="*res://scripts/GameMaster.gd"
 HelperFunctions="*res://scripts/helper_functions.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 ui_right={

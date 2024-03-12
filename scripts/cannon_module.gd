@@ -72,7 +72,7 @@ func score_target(t:RigidBody3D) -> float:
 		return 0
 	
 	#score is just negative distance, to prioritize closer targets
-	return -expected_position.length_squared()
+	return -local_pos.length_squared()
 
 func try_shoot_at_target():
 	if get_parent() != original_parent:
