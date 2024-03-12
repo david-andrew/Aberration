@@ -65,7 +65,7 @@ func select_best_target():
 	target = best_target
 
 func score_target(target:RigidBody3D) -> float:
-	var expected_position = HelperFunctions.compute_expected_target_position(global_position, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
+	var expected_position = HelperFunctions.compute_expected_target_position(global_position, linear_velocity, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
 	var local_pos = original_transform * expected_position
 	
 	if local_pos.dot(Vector3.FORWARD) < 0.25: #can't even point at this target
@@ -81,7 +81,7 @@ func try_shoot_at_target():
 	if not target:
 		return
 	
-	var expected_position = HelperFunctions.compute_expected_target_position(global_position, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
+	var expected_position = HelperFunctions.compute_expected_target_position(global_position, linear_velocity, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
 	#look_at(target.global_position, Vector3.UP)
 	look_at(expected_position, Vector3.UP)
 

@@ -4,7 +4,7 @@ class_name ThrustModule
 
 @export var TRANSLATION_STRENGTH:float = 500
 @export var ROTATION_STRENGTH:float = 2
-@export var THRUST_MULTIPLIER:float = 5
+@export var THRUST_STRENGTH:float = 2500
 
 var original_parent:RigidBody3D
 
@@ -26,4 +26,4 @@ func translate_towards(target:Vector3, strength:float=1.0):
 func thrust_forward(strength:float=1.0):
 	if get_parent() != original_parent:
 		return
-	original_parent.apply_central_force(strength * THRUST_MULTIPLIER * Vector3.FORWARD)
+	original_parent.apply_central_force(original_parent.basis *  Vector3.FORWARD * strength * THRUST_STRENGTH)
