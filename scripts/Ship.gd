@@ -26,7 +26,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -62,7 +62,7 @@ func _physics_process(delta):
 			laser.visible = false
 
 	if Input.is_action_just_pressed("caps-lock"):
-		selected_weapon = (selected_weapon + 1) % WeaponType.size()
+		selected_weapon = (selected_weapon + 1) as WeaponType % WeaponType.size()
 		if selected_weapon != WeaponType.LASER:
 			laser.visible = false
 	

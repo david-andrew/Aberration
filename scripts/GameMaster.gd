@@ -18,7 +18,7 @@ func set_current_scene(scene):
 	current_scene = scene
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if total_bullets > MAX_BULLETS:
 		cull_bullets()
 

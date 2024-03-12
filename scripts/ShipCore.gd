@@ -29,8 +29,10 @@ func _ready():
 func _physics_process(delta):
 	if not is_instance_valid(player):
 		return
-	thrusters.translate_towards(player.global_position)
+	#thrusters.translate_towards(player.global_position)
 	#thrusters.point_towards(player.global_position)
+	#thrusters.thrust_forward(1.0)
+	apply_central_force(basis * Vector3.FORWARD * 1000)
 	pass
 
 

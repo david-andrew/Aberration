@@ -2,7 +2,7 @@ extends ShipModule
 class_name ThrustModule
 
 
-@export var TRANSLATION_STRENGTH:float = 100
+@export var TRANSLATION_STRENGTH:float = 500
 @export var ROTATION_STRENGTH:float = 2
 @export var THRUST_MULTIPLIER:float = 5
 
@@ -21,4 +21,9 @@ func translate_towards(target:Vector3, strength:float=1.0):
 	if get_parent() != original_parent:
 		return
 	var local_direction = to_local(target).normalized()
-	original_parent.apply_central_force(Vector3(local_direction.x, local_direction.y, local_direction.z*THRUST_MULTIPLIER) * TRANSLATION_STRENGTH * strength)
+	original_parent.apply_central_force(local_direction * TRANSLATION_STRENGTH * strength)
+
+func thrust_forward(strength:float=1.0):
+	if get_parent() != original_parent:
+		return
+	original_parent.apply_central_force(strength * THRUST_MULTIPLIER * Vector3.FORWARD)
