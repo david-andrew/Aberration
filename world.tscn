@@ -58,77 +58,66 @@ team = 0
 
 [node name="LargeShip5" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -231.153, 99.0077, -267)
-visible = false
 
 [node name="TeamID" parent="LargeShip5" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip6" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -131.153, 168.008, -267)
-visible = false
 
 [node name="TeamID" parent="LargeShip6" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip7" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -131.153, 251.685, -397.906)
-visible = false
 
 [node name="TeamID" parent="LargeShip7" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip8" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.808013, 0.433013, -0.399519, -0.25, 0.866025, 0.433013, 0.533494, -0.25, 0.808013, 40.8468, -9.99228, -691.366)
-visible = false
 
 [node name="TeamID" parent="LargeShip8" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip2" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 61.8468, 99.0077, -156)
-visible = false
 
 [node name="TeamID" parent="LargeShip2" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip9" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 61.8468, 240.008, -309)
-visible = false
 
 [node name="TeamID" parent="LargeShip9" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip10" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(-0.5, -3.08008e-09, -0.866025, 0.224144, 0.965926, -0.129409, 0.836516, -0.258819, -0.482963, 61.8468, 240.008, -28)
-visible = false
 
 [node name="TeamID" parent="LargeShip10" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip11" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(-0.974444, 0.224144, -0.0147546, 0.224144, 0.965926, -0.129409, -0.0147546, -0.129409, -0.991481, 61.8468, 274.008, -125)
-visible = false
 
 [node name="TeamID" parent="LargeShip11" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip12" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(-0.851271, 0.12941, -0.508519, 0.224144, 0.965926, -0.129409, 0.474444, -0.224144, -0.851271, 61.8468, 147.008, -125)
-visible = false
 
 [node name="TeamID" parent="LargeShip12" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip3" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -128.153, -17.9923, -156)
-visible = false
 
 [node name="TeamID" parent="LargeShip3" instance=ExtResource("6_pbg1v")]
 team = 0
 
 [node name="LargeShip4" parent="." instance=ExtResource("1_h85ca")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1532, 46.0077, -220.332)
-visible = false
 
 [node name="TeamID" parent="LargeShip4" instance=ExtResource("6_pbg1v")]
 team = 0
@@ -155,7 +144,6 @@ MAX_HEALTH = 1000
 [node name="Laser" parent="Player" instance=ExtResource("4_c62u1")]
 
 [node name="TeamID" parent="Player" instance=ExtResource("6_pbg1v")]
-team = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)

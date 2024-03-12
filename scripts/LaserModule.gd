@@ -21,6 +21,11 @@ func _ready():
 	original_parent = get_parent()
 
 func shoot(physics_delta):
+	#DEBUG, for now don't use lasers
+	laser.visible = false
+	return
+	
+	
 	#only try to shoot again after a random number of frames
 	if not last_try_had_enough_power and randf() < 0.9:
 		return

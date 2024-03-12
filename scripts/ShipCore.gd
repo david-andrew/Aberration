@@ -26,23 +26,23 @@ func _ready():
 	player = GameMaster.current_scene.find_child('Player')
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not is_instance_valid(player):
 		return
 	
 	if not is_instance_valid(thrusters):
 		return
-	#thrusters.translate_towards(player.global_position)
-	thrusters.point_towards(player.global_position)
-	#thrusters.thrust_forward(1.0)
+	thrusters.translate_towards(player.global_position)
+	thrusters.point_towards(player.global_position, delta)
+	thrusters.thrust_forward(1.0)
 	#apply_central_force(basis * Vector3.FORWARD * 1000)
 	pass
 	
-	var local_angular = angular_velocity * global_basis
-	#local_angular.x = 1
-	local_angular.z = 0#sign(local_angular.z) * min(abs(local_angular.z), 0.1)
-	angular_velocity = global_basis * local_angular
-	
+	#var local_angular = angular_velocity * global_basis
+	##local_angular.x = 1
+	#local_angular.z = 0#sign(local_angular.z) * min(abs(local_angular.z), 0.1)
+	#angular_velocity = global_basis * local_angular
+	#
 
 
 func destroy():
