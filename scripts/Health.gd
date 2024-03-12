@@ -30,7 +30,7 @@ func _ready():
 	if MATERIAL:
 		initial_color = MATERIAL.albedo_color
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	handle_collisions()
 
 func handle_collisions():

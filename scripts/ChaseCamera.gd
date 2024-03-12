@@ -18,12 +18,12 @@ func _ready():
 	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+	#pass
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	
 	test_velocity = global_position - prev_test_position

@@ -8,7 +8,7 @@ var prev_position: Vector3
 func _ready():
 	prev_position = global_position
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	linear_velocity = global_position - prev_position
 	prev_position = global_position
 	

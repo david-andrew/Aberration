@@ -24,9 +24,9 @@ func _ready():
 	
 	#DEBUG translate towards the player
 	player = GameMaster.current_scene.find_child('Player')
-	print('found player: ', player)
 
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	if not is_instance_valid(player):
 		return
 	

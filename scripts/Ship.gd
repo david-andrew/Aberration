@@ -31,7 +31,7 @@ func _process(_delta):
 
 
 func shoot_bullet():
-	if Time.get_ticks_msec() - last_shot_time > (1000 / SHOOT_FREQUENCY) and bullet_count < BULLETS_PER_SHOT:
+	if Time.get_ticks_msec() - last_shot_time > (1000.0 / SHOOT_FREQUENCY) and bullet_count < BULLETS_PER_SHOT:
 		var bullet = BULLET.instantiate()
 		GameMaster.current_scene.add_child(bullet)
 		bullet.global_basis = global_basis
@@ -62,7 +62,7 @@ func _physics_process(delta):
 			laser.visible = false
 
 	if Input.is_action_just_pressed("caps-lock"):
-		selected_weapon = (selected_weapon + 1) as WeaponType % WeaponType.size()
+		selected_weapon = ((selected_weapon + 1) % WeaponType.size()) as WeaponType
 		if selected_weapon != WeaponType.LASER:
 			laser.visible = false
 	

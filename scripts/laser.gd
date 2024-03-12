@@ -9,7 +9,7 @@ func _ready():
 	enabled = false #only use force_raycast_update
 	visible = true # debug testing
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not visible: #visibility determines if active or not
 		return
 	

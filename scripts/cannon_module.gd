@@ -33,7 +33,7 @@ func _ready():
 	original_parent = get_parent()
 	original_transform = Transform3D(transform) # for calculating allowed deviation for aiming
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	select_best_target()
 	try_shoot_at_target()
 
@@ -64,8 +64,8 @@ func select_best_target():
 
 	target = best_target
 
-func score_target(target:RigidBody3D) -> float:
-	var expected_position = HelperFunctions.compute_expected_target_position(global_position, linear_velocity, BULLET_INITIAL_SPEED, target.global_position, target.linear_velocity)
+func score_target(t:RigidBody3D) -> float:
+	var expected_position = HelperFunctions.compute_expected_target_position(global_position, linear_velocity, BULLET_INITIAL_SPEED, t.global_position, t.linear_velocity)
 	var local_pos = original_transform * expected_position
 	
 	if local_pos.dot(Vector3.FORWARD) < 0.25: #can't even point at this target
@@ -95,7 +95,7 @@ func try_shoot_at_target():
 	
 		
 func shoot_bullet():
-	if Time.get_ticks_msec() - last_shot_time > (1000 / SHOOT_FREQUENCY):
+	if Time.get_ticks_msec() - last_shot_time > (1000.0 / SHOOT_FREQUENCY):
 		var bullet = BULLET.instantiate()
 		GameMaster.current_scene.add_child(bullet)
 		bullet.global_basis = global_basis
