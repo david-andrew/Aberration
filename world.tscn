@@ -51,7 +51,7 @@ size = Vector3(100, 100, 100)
 [node name="World" type="Node3D"]
 
 [node name="LargeShip" parent="." instance=ExtResource("1_h85ca")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9304, 13.3459, -17.7345)
+transform = Transform3D(0.965926, -7.45058e-09, 0.258819, 0.0669873, 0.965926, -0.25, -0.25, 0.258819, 0.933013, -149.93, 52.3459, -17.7345)
 
 [node name="TeamID" parent="LargeShip" instance=ExtResource("6_pbg1v")]
 team = 0
