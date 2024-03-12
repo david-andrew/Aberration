@@ -37,7 +37,7 @@ func _physics_process(delta):
 	if not is_instance_valid(thrusters):
 		return
 	
-	
+	avoid_other_ships()
 	
 	#thrusters.translate_towards(target.global_position)
 	thrusters.point_towards(target.global_position, delta)
@@ -50,6 +50,22 @@ func _physics_process(delta):
 	#local_angular.z = 0#sign(local_angular.z) * min(abs(local_angular.z), 0.1)
 	#angular_velocity = global_basis * local_angular
 	#
+
+func avoid_other_ships():
+	pass
+	for ally in allies:
+		if not is_instance_valid(ally) or ally == self:
+			continue
+		var diff = ally.global_position - global_position
+		var length = diff.length()
+		apply_central_force((diff / length) * (length - 200))
+	for enemy in enemies:
+		if not is_instance_valid(enemy):
+			continue
+		var diff = enemy.global_position - global_position
+		var length = diff.length()
+		apply_central_force((diff / length) * (length - 200))
+		
 
 
 func select_forward_target():

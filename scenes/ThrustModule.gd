@@ -29,7 +29,7 @@ func point_towards(target:Vector3, delta:float):
 
 	var angle = acos(clamp(current_dir.dot(target_dir), -1, 1))
 	var axis = current_dir.cross(target_dir).normalized()
-	print('rotation angle ', angle)
+	#print('rotation angle ', angle)
 	if angle > 0.01:
 		var rotation_amount = min(angle, 0.1 * delta)#rotation_speed * delta)
 		var rot = Quaternion(axis, rotation_amount)
