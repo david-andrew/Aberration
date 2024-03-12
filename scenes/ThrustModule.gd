@@ -15,7 +15,11 @@ func _ready():
 func point_towards(target:Vector3, strength:float=1.0):
 	if get_parent() != original_parent:
 		return
-	original_parent.look_at(target, Vector3.UP, true)
+	#DEBUG
+	var relative_diff = target - original_parent.global_position
+	if original_parent.visible:
+		print(relative_diff)
+	#original_parent.look_at(target, Vector3.UP)
 
 func translate_towards(target:Vector3, strength:float=1.0):
 	if get_parent() != original_parent:
