@@ -20,17 +20,14 @@ var bullet_count = 0
 
 @onready var laser = $Laser
 
-@onready var audio = $AudioController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	laser.visible = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
+func _exit_tree():
+	GameMaster.game_over = true
 
 func shoot_bullet():
 	if Time.get_ticks_msec() - last_shot_time > (1000.0 / SHOOT_FREQUENCY) and bullet_count < BULLETS_PER_SHOT:

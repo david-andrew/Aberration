@@ -27,7 +27,7 @@ func _ready():
 func _physics_process(delta):
 	hitloop.volume_db += (HITLOOP_SILENCE_VOLUME - hitloop.volume_db) * delta
 	
-	if Input.is_action_pressed('space'):
+	if Input.is_action_pressed('space') and not GameMaster.game_over:
 		#get_hit()
 		cannon.volume_db += (CANNON_PLAY_VOLUME - cannon.volume_db) * delta * 50
 	else:

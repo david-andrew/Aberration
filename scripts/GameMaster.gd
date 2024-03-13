@@ -7,7 +7,7 @@ const MAX_BULLETS = 1000
 var total_bullets = 0 #keep track of the number of bullets in the scene
 var bullet_id = 0     #keep track of unique ids for bullets
 var current_scene = null
-
+var game_over: bool = false
 
 func _ready():
 	if current_scene == null:
