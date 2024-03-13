@@ -50,7 +50,7 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -131.153, 
 [node name="TeamID" parent="LargeShip6" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip7" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -131.153, 251.685, -1739.91)
+transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -366.093, 251.685, -1739.91)
 
 [node name="TeamID" parent="LargeShip7" instance=ExtResource("2_5ta6q")]
 
@@ -75,7 +75,7 @@ transform = Transform3D(0.965926, 0, -0.258819, -0.0669873, 0.965926, -0.25, 0.2
 [node name="TeamID" parent="LargeShip14" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip15" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(2.08616e-07, 0, -1, -0.258819, 0.965926, -5.39939e-08, 0.965926, 0.258819, 2.01508e-07, -141.906, 322.057, -1503.12)
+transform = Transform3D(2.08616e-07, 0, -1, -0.258819, 0.965926, -5.39939e-08, 0.965926, 0.258819, 2.01508e-07, -512.99, 322.057, -1503.12)
 
 [node name="TeamID" parent="LargeShip15" instance=ExtResource("2_5ta6q")]
 
@@ -95,7 +95,7 @@ transform = Transform3D(0.707107, 0, -0.707107, -0.183013, 0.965926, -0.183013, 
 [node name="TeamID" parent="LargeShip18" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip9" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 61.8468, 240.008, -79.4564)
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, -221.153, 402.008, -79.4564)
 
 [node name="TeamID" parent="LargeShip9" instance=ExtResource("2_5ta6q")]
 team = 0
@@ -107,7 +107,7 @@ transform = Transform3D(-0.5, -3.08008e-09, -0.866025, 0.224144, 0.965926, -0.12
 team = 0
 
 [node name="LargeShip11" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.974444, 0.224144, -0.0147546, 0.224144, 0.965926, -0.129409, -0.0147546, -0.129409, -0.991481, 61.8468, 274.008, 104.544)
+transform = Transform3D(0.836516, -0.258819, -0.482963, 0.224144, 0.965926, -0.129409, 0.5, -5.28991e-07, 0.866025, 143.847, 274.008, 104.544)
 
 [node name="TeamID" parent="LargeShip11" instance=ExtResource("2_5ta6q")]
 team = 0
@@ -149,7 +149,7 @@ transform = Transform3D(-0.922537, 0.313564, 0.22495, 0.212688, 0.89952, -0.3816
 team = 0
 
 [node name="LargeShip22" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.925861, 0.245741, -0.287043, 0.339302, 0.875, -0.345325, 0.166301, -0.417117, -0.893509, 50.9226, 332.477, 238.594)
+transform = Transform3D(0.937355, -0.345325, 0.046005, 0.339302, 0.875, -0.345325, 0.0789961, 0.339302, 0.937356, 50.9226, 382.477, 238.594)
 
 [node name="TeamID" parent="LargeShip22" instance=ExtResource("2_5ta6q")]
 team = 0
@@ -161,7 +161,7 @@ transform = Transform3D(0.997717, 0.0669873, 0.00851846, -0.0669873, 0.965926, 0
 team = 0
 
 [node name="LargeShip24" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, -5.42048, 210.245, 155.228)
+transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, -79.4205, 210.245, 155.228)
 
 [node name="TeamID" parent="LargeShip24" instance=ExtResource("2_5ta6q")]
 team = 0

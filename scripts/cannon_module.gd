@@ -69,7 +69,12 @@ func score_target(t:RigidBody3D) -> float:
 	var local_pos = original_transform * expected_position
 	
 	if local_pos.dot(Vector3.FORWARD) < 0.25: #can't even point at this target
-		return 0
+		return -999999999
+	
+		# don't shoot if target too far
+	if (expected_position - global_position).length() > 1000:
+		return -999999999
+	
 	
 	#score is just negative distance, to prioritize closer targets
 	return -local_pos.length_squared()
