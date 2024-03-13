@@ -72,7 +72,7 @@ func score_target(t:RigidBody3D) -> float:
 		return -999999999
 	
 		# don't shoot if target too far
-	if (expected_position - global_position).length() > 1000:
+	if (expected_position - global_position).length() > 2000:
 		return -999999999
 	
 	
