@@ -8,15 +8,30 @@ var total_bullets = 0 #keep track of the number of bullets in the scene
 var bullet_id = 0     #keep track of unique ids for bullets
 var current_scene = null
 var game_over: bool = false
+var animator: AnimationPlayer
+var ui
+var continue_button: Button
 
 func _ready():
 	if current_scene == null:
 		var root = get_tree().get_root()
 		current_scene = root.get_child(root.get_child_count() - 1)
+	animator = current_scene.find_child('AnimationPlayer')
+	ui = current_scene.find_child('UI')
+	continue_button = ui.find_child('CanvasLayer').find_child("ContinueButton")
+	continue_button.connect("pressed", do_continue_game)
 
 func set_current_scene(scene):
 	current_scene = scene
 
+func do_game_over():
+	game_over = true
+	animator.play("ContinueFadeIn")
+	
+func do_continue_game():
+	game_over = false
+	ui.hide_elements()
+	#create a new instance of the player and add them to the scene
 
 func _physics_process(_delta):
 	if total_bullets > MAX_BULLETS:

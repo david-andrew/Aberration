@@ -27,7 +27,7 @@ func _ready():
 
 
 func _exit_tree():
-	GameMaster.game_over = true
+	GameMaster.do_game_over()
 
 func shoot_bullet():
 	if Time.get_ticks_msec() - last_shot_time > (1000.0 / SHOOT_FREQUENCY) and bullet_count < BULLETS_PER_SHOT:

@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://csoggynpxgor1" path="res://scenes/audio_controller.tscn" id="9_q0qpt"]
 [ext_resource type="Script" path="res://UI.gd" id="10_epuu3"]
 [ext_resource type="FontFile" uid="uid://dnpih4o6u6268" path="res://fonts/NovaSquare-Regular.ttf" id="10_liufv"]
-[ext_resource type="Script" path="res://Title.gd" id="11_6wi3b"]
 [ext_resource type="Texture2D" uid="uid://bi68f1wieyqly" path="res://fonts/star.png" id="12_suh53"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
@@ -119,9 +118,74 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ContinueButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2e31v"]
+resource_name = "ContinueFadeIn"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Title/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Title/TextureRect2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/ContinueButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dmevq"]
 _data = {
+"ContinueFadeIn": SubResource("Animation_2e31v"),
 "RESET": SubResource("Animation_oh4b7"),
 "TitleAnimation": SubResource("Animation_7es4q")
 }
@@ -280,7 +344,6 @@ text = "Silver Void"
 label_settings = SubResource("LabelSettings_irna5")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("11_6wi3b")
 
 [node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/Title"]
 modulate = Color(1, 1, 1, 0)
@@ -301,6 +364,24 @@ offset_right = 1090.0
 offset_bottom = 104.0
 texture = ExtResource("12_suh53")
 expand_mode = 1
+
+[node name="ContinueButton" type="Button" parent="UI/CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = 120.0
+offset_right = 211.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_liufv")
+theme_override_font_sizes/font_size = 100
+text = "Continue"
+flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
 libraries = {
