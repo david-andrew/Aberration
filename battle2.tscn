@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bt7osgrpvasxl"]
+[gd_scene load_steps=20 format=3 uid="uid://bt7osgrpvasxl"]
 
 [ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_5pbcc"]
 [ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="2_5ta6q"]
 [ext_resource type="PackedScene" uid="uid://d3ko46u3rn5rm" path="res://scenes/player.tscn" id="3_n6rga"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="7_f3ya5"]
+[ext_resource type="Script" path="res://scripts/ShipTrackers.gd" id="8_3ic3j"]
 [ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="8_a85b1"]
 [ext_resource type="PackedScene" uid="uid://csoggynpxgor1" path="res://scenes/audio_controller.tscn" id="9_q0qpt"]
 [ext_resource type="Script" path="res://UI.gd" id="10_epuu3"]
@@ -23,6 +24,11 @@ sky = SubResource("Sky_u6aip")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycfld"]
+line_spacing = 10.0
+font = ExtResource("10_liufv")
+font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_irna5"]
 font = ExtResource("10_liufv")
@@ -314,6 +320,20 @@ script = ExtResource("8_a85b1")
 
 [node name="UI" type="Node" parent="."]
 script = ExtResource("10_epuu3")
+
+[node name="ShipTrackers" type="CanvasLayer" parent="UI"]
+script = ExtResource("8_3ic3j")
+
+[node name="TemplateDistanceLabel" type="Label" parent="UI/ShipTrackers"]
+visible = false
+offset_left = 37.0
+offset_top = 123.0
+offset_right = 120.0
+offset_bottom = 136.0
+text = "120938"
+label_settings = SubResource("LabelSettings_ycfld")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
 
