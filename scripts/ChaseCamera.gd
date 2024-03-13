@@ -1,7 +1,9 @@
 extends RigidBody3D
+class_name ChaseCamera
 
-@export var target: CameraTarget
-var target_parent: Node3D
+var player: Player
+var target: CameraTarget
+#var target_parent: Node3D
 
 @export var spring: float = 100
 @export var damping: float = 400
@@ -11,8 +13,11 @@ var prev_test_position: Vector3 = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = GameMaster.current_scene.find_child("Player")
+	target = player.find_child("CameraTarget")
+	
 	# get the target_parent
-	target_parent = target.get_parent()
+	#target_parent = target.get_parent()
 	
 	prev_test_position = global_position
 	

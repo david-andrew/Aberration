@@ -65,6 +65,10 @@ func select_best_target():
 	target = best_target
 
 func score_target(t:RigidBody3D) -> float:
+	#don't target the player when they're dead
+	if t.name == "Player" and t.is_dead:
+		return -999999999
+	
 	var expected_position = HelperFunctions.compute_expected_target_position(global_position, linear_velocity, BULLET_INITIAL_SPEED, t.global_position, t.linear_velocity)
 	var local_pos = original_transform * expected_position
 	

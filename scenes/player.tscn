@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3ko46u3rn5rm"]
+
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="1_yy3ic"]
+[ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="2_an5c1"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="3_u600j"]
+[ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="4_60e4l"]
+[ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="5_jtkk1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4b5v"]
+albedo_color = Color(0.31, 0.545, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
+material = SubResource("StandardMaterial3D_t4b5v")
+
+[node name="Player" type="RigidBody3D"]
+max_contacts_reported = 10
+contact_monitor = true
+angular_damp = 1.0
+script = ExtResource("1_yy3ic")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_278ud")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l6wpm")
+
+[node name="CameraTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
+script = ExtResource("2_an5c1")
+
+[node name="Health" parent="." instance=ExtResource("3_u600j")]
+MAX_HEALTH = 400
+
+[node name="Laser" parent="." instance=ExtResource("4_60e4l")]
+
+[node name="TeamID" parent="." instance=ExtResource("5_jtkk1")]
+team = 0

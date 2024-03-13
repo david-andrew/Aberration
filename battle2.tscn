@@ -1,25 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://bt7osgrpvasxl"]
+[gd_scene load_steps=18 format=3 uid="uid://bt7osgrpvasxl"]
 
 [ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_5pbcc"]
 [ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="2_5ta6q"]
-[ext_resource type="Script" path="res://scripts/Ship.gd" id="3_onkh0"]
-[ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="4_8t4wl"]
-[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="5_sqyr4"]
-[ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="6_5njx6"]
+[ext_resource type="PackedScene" uid="uid://d3ko46u3rn5rm" path="res://scenes/player.tscn" id="3_n6rga"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="7_f3ya5"]
 [ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="8_a85b1"]
 [ext_resource type="PackedScene" uid="uid://csoggynpxgor1" path="res://scenes/audio_controller.tscn" id="9_q0qpt"]
 [ext_resource type="Script" path="res://UI.gd" id="10_epuu3"]
 [ext_resource type="FontFile" uid="uid://dnpih4o6u6268" path="res://fonts/NovaSquare-Regular.ttf" id="10_liufv"]
 [ext_resource type="Texture2D" uid="uid://bi68f1wieyqly" path="res://fonts/star.png" id="12_suh53"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4b5v"]
-albedo_color = Color(0.31, 0.545, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_l6wpm"]
-material = SubResource("StandardMaterial3D_t4b5v")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6eqga"]
 panorama = ExtResource("7_f3ya5")
@@ -130,6 +119,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ContinueButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2e31v"]
 resource_name = "ContinueFadeIn"
@@ -181,6 +182,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/ContinueButton:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dmevq"]
@@ -280,29 +293,7 @@ transform = Transform3D(0.997717, 0.0669873, 0.00851846, -0.0669873, 0.965926, 0
 [node name="TeamID" parent="LargeShip23" instance=ExtResource("2_5ta6q")]
 team = 0
 
-[node name="Player" type="RigidBody3D" parent="."]
-max_contacts_reported = 10
-contact_monitor = true
-angular_damp = 1.0
-script = ExtResource("3_onkh0")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("BoxShape3D_278ud")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("BoxMesh_l6wpm")
-
-[node name="CameraTarget" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
-script = ExtResource("4_8t4wl")
-
-[node name="Health" parent="Player" instance=ExtResource("5_sqyr4")]
-MAX_HEALTH = 400
-
-[node name="Laser" parent="Player" instance=ExtResource("6_5njx6")]
-
-[node name="TeamID" parent="Player" instance=ExtResource("2_5ta6q")]
-team = 0
+[node name="Player" parent="." instance=ExtResource("3_n6rga")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.606566, -0.302769, -0.735125, 0.795013, 0.224463, 0.563534, -0.00561274, -0.926254, 0.376857, 0, 1.67446, 0)
@@ -313,10 +304,9 @@ transform = Transform3D(-0.935301, -0.0408648, 0.351485, 0.301389, -0.612465, 0.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4wuuw")
 
-[node name="ChaseCamera" type="RigidBody3D" parent="." node_paths=PackedStringArray("target")]
+[node name="ChaseCamera" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.71112)
 script = ExtResource("8_a85b1")
-target = NodePath("../Player/CameraTarget")
 
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
 
@@ -380,6 +370,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("10_liufv")
 theme_override_font_sizes/font_size = 100
+disabled = true
 text = "Continue"
 flat = true
 
