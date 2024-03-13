@@ -58,8 +58,16 @@ func do_continue_game():
 	#chase_camera.prev_test_position = chase_camera.global_position
 
 func _physics_process(_delta):
+	# handle too many bullets
 	if total_bullets > MAX_BULLETS:
 		cull_bullets()
+	
+	# lesten for leaving fullscreen
+	if Input.is_action_just_pressed("escape"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func add_bullet() -> int:
 	total_bullets += 1

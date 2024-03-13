@@ -13,6 +13,8 @@ var ally_dists: Array[Label]
 
 var label_settings: LabelSettings
 
+var hud_visible: bool = true
+
 #DEBUG:
 #var largetship7: ShipCore
 
@@ -62,6 +64,21 @@ func _ready():
 	
 	
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("enter"):
+		hud_visible = !hud_visible
+		for rect in enemy_rects:
+			rect.visible = hud_visible
+		for dist_label in enemy_dists:
+			dist_label.visible = hud_visible
+		for rect in ally_rects:
+			rect.visible = hud_visible
+		for dist_label in ally_dists:
+			dist_label.visible = hud_visible
+			
+	
+	if not hud_visible:
+		return
+	
 	var camera_forward = camera.global_basis * Vector3.FORWARD
 	for i in range(len(enemy_rects)):
 		var enemy = enemies[i]
