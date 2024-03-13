@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bt7osgrpvasxl"]
+[gd_scene load_steps=16 format=3 uid="uid://bt7osgrpvasxl"]
 
 [ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_5pbcc"]
 [ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="2_5ta6q"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="6_5njx6"]
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="7_f3ya5"]
 [ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="8_a85b1"]
+[ext_resource type="PackedScene" uid="uid://csoggynpxgor1" path="res://scenes/audio_controller.tscn" id="9_q0qpt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -182,7 +183,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
 script = ExtResource("4_8t4wl")
 
 [node name="Health" parent="Player" instance=ExtResource("5_sqyr4")]
-MAX_HEALTH = 1000
+MAX_HEALTH = 400
 
 [node name="Laser" parent="Player" instance=ExtResource("6_5njx6")]
 
@@ -204,3 +205,5 @@ script = ExtResource("8_a85b1")
 target = NodePath("../Player/CameraTarget")
 
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
+
+[node name="AudioController" parent="." instance=ExtResource("9_q0qpt")]

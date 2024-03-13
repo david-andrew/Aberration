@@ -1,16 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://dwyh17swso2yf"]
+[gd_scene load_steps=22 format=3 uid="uid://dwyh17swso2yf"]
 
-[ext_resource type="Script" path="res://scripts/Ship.gd" id="1_dojcp"]
-[ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_h85ca"]
-[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="2_1cdyd"]
-[ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="2_jrtur"]
-[ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="3_ytujd"]
-[ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="4_c62u1"]
-[ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="4_mhwvw"]
-[ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="6_pbg1v"]
-[ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="7_3p5ke"]
-[ext_resource type="PackedScene" uid="uid://d0cn0wfyxb1kj" path="res://scenes/new_test_obstacle.tscn" id="7_6bovt"]
-[ext_resource type="PackedScene" uid="uid://drdrepn61gjni" path="res://scenes/OLD_shield.tscn" id="9_ria2g"]
+[ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_nca4p"]
+[ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="2_3yikh"]
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="3_tn3ae"]
+[ext_resource type="Script" path="res://scripts/CameraTarget.gd" id="4_405re"]
+[ext_resource type="PackedScene" uid="uid://bwxo76t5hck46" path="res://scenes/health.tscn" id="5_x32ll"]
+[ext_resource type="PackedScene" uid="uid://x6kwsu00lfq2" path="res://scenes/laser.tscn" id="6_x6lp7"]
+[ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="7_rbvo4"]
+[ext_resource type="Texture2D" uid="uid://dofvgqmmehps4" path="res://assets/textures/white outline grid thick.png" id="8_5ghn0"]
+[ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="9_f512e"]
+[ext_resource type="PackedScene" uid="uid://d0cn0wfyxb1kj" path="res://scenes/new_test_obstacle.tscn" id="10_t5fpa"]
+[ext_resource type="PackedScene" uid="uid://drdrepn61gjni" path="res://scenes/OLD_shield.tscn" id="11_4jhmj"]
+[ext_resource type="PackedScene" uid="uid://csoggynpxgor1" path="res://scenes/audio_controller.tscn" id="12_nrphf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -21,7 +22,7 @@ albedo_color = Color(0.31, 0.545, 0, 1)
 material = SubResource("StandardMaterial3D_t4b5v")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6eqga"]
-panorama = ExtResource("2_jrtur")
+panorama = ExtResource("7_rbvo4")
 
 [sub_resource type="Sky" id="Sky_u6aip"]
 sky_material = SubResource("PanoramaSkyMaterial_6eqga")
@@ -41,7 +42,7 @@ size = Vector3(100, 100, 100)
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0, 0.6, 0.639216, 1)
-albedo_texture = ExtResource("3_ytujd")
+albedo_texture = ExtResource("8_5ghn0")
 uv1_scale = Vector3(75, 50, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_g8qny"]
@@ -50,41 +51,41 @@ size = Vector3(100, 100, 100)
 
 [node name="World" type="Node3D"]
 
-[node name="LargeShip" parent="." instance=ExtResource("1_h85ca")]
+[node name="LargeShip" parent="." instance=ExtResource("1_nca4p")]
 transform = Transform3D(0.965926, -7.45058e-09, 0.258819, 0.0669873, 0.965926, -0.25, -0.25, 0.258819, 0.933013, -149.93, 52.3459, -381.766)
 
-[node name="TeamID" parent="LargeShip" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="LargeShip" instance=ExtResource("2_3yikh")]
 
-[node name="LargeShip5" parent="." instance=ExtResource("1_h85ca")]
+[node name="LargeShip5" parent="." instance=ExtResource("1_nca4p")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -231.153, 99.0077, -631.036)
 
-[node name="TeamID" parent="LargeShip5" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="LargeShip5" instance=ExtResource("2_3yikh")]
 
-[node name="LargeShip6" parent="." instance=ExtResource("1_h85ca")]
+[node name="LargeShip6" parent="." instance=ExtResource("1_nca4p")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -131.153, 168.008, -631.036)
 
-[node name="TeamID" parent="LargeShip6" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="LargeShip6" instance=ExtResource("2_3yikh")]
 
-[node name="LargeShip7" parent="." instance=ExtResource("1_h85ca")]
+[node name="LargeShip7" parent="." instance=ExtResource("1_nca4p")]
 transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -131.153, 251.685, -761.946)
 
-[node name="TeamID" parent="LargeShip7" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="LargeShip7" instance=ExtResource("2_3yikh")]
 
-[node name="LargeShip8" parent="." instance=ExtResource("1_h85ca")]
+[node name="LargeShip8" parent="." instance=ExtResource("1_nca4p")]
 transform = Transform3D(0.808013, 0.433013, -0.399519, -0.25, 0.866025, 0.433013, 0.533494, -0.25, 0.808013, 40.8468, -9.99228, -1055.41)
 
-[node name="TeamID" parent="LargeShip8" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="LargeShip8" instance=ExtResource("2_3yikh")]
 
-[node name="LargeShip2" parent="." instance=ExtResource("1_h85ca")]
+[node name="LargeShip2" parent="." instance=ExtResource("1_nca4p")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 61.8468, 99.0077, -520.036)
 
-[node name="TeamID" parent="LargeShip2" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="LargeShip2" instance=ExtResource("2_3yikh")]
 
 [node name="Player" type="RigidBody3D" parent="."]
 max_contacts_reported = 10
 contact_monitor = true
 angular_damp = 1.0
-script = ExtResource("1_dojcp")
+script = ExtResource("3_tn3ae")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("BoxShape3D_278ud")
@@ -94,14 +95,14 @@ mesh = SubResource("BoxMesh_l6wpm")
 
 [node name="CameraTarget" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.79877)
-script = ExtResource("4_mhwvw")
+script = ExtResource("4_405re")
 
-[node name="Health" parent="Player" instance=ExtResource("2_1cdyd")]
-MAX_HEALTH = 1000
+[node name="Health" parent="Player" instance=ExtResource("5_x32ll")]
+MAX_HEALTH = 400
 
-[node name="Laser" parent="Player" instance=ExtResource("4_c62u1")]
+[node name="Laser" parent="Player" instance=ExtResource("6_x6lp7")]
 
-[node name="TeamID" parent="Player" instance=ExtResource("6_pbg1v")]
+[node name="TeamID" parent="Player" instance=ExtResource("2_3yikh")]
 team = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -124,17 +125,17 @@ mesh = SubResource("BoxMesh_g8qny")
 
 [node name="ChaseCamera" type="RigidBody3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.71112)
-script = ExtResource("7_3p5ke")
+script = ExtResource("9_f512e")
 target = NodePath("../Player/CameraTarget")
 
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
 
-[node name="NewTestObstacle2" parent="." instance=ExtResource("7_6bovt")]
+[node name="NewTestObstacle2" parent="." instance=ExtResource("10_t5fpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 15.1525, -14.0386)
 max_contacts_reported = 10
 contact_monitor = true
 
-[node name="Shield" parent="NewTestObstacle2" instance=ExtResource("9_ria2g")]
+[node name="Shield" parent="NewTestObstacle2" instance=ExtResource("11_4jhmj")]
 max_contacts_reported = 10
 contact_monitor = true
 
@@ -142,12 +143,14 @@ contact_monitor = true
 node_a = NodePath("..")
 node_b = NodePath("../Shield")
 
-[node name="NewTestObstacle3" parent="." instance=ExtResource("7_6bovt")]
+[node name="NewTestObstacle3" parent="." instance=ExtResource("10_t5fpa")]
 transform = Transform3D(1, 0, 0, 0, 0.547446, 0.836841, 0, -0.836841, 0.547446, -4.29016, 7.57625, 33.9236)
 max_contacts_reported = 10
 contact_monitor = true
 
-[node name="NewTestObstacle4" parent="." instance=ExtResource("7_6bovt")]
+[node name="NewTestObstacle4" parent="." instance=ExtResource("10_t5fpa")]
 transform = Transform3D(-0.464326, -0.754404, -0.463978, -0.843392, 0.536549, -0.0283761, 0.270354, 0.37814, -0.885392, 23.9953, 9.93048, 17.2644)
 max_contacts_reported = 10
 contact_monitor = true
+
+[node name="AudioController" parent="." instance=ExtResource("12_nrphf")]

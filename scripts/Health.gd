@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node
 class_name Health
 
@@ -8,6 +8,8 @@ var MATERIAL: StandardMaterial3D
 var health: int
 var initial_color: Color
 var parent: RigidBody3D
+var parent_is_player: bool
+var audio_controller: AudioController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +24,9 @@ func _ready():
 	parent = get_parent()
 	parent.contact_monitor = true
 	parent.max_contacts_reported = 10
+	parent_is_player = parent.name == 'Player'
+	
+	audio_controller = GameMaster.current_scene.find_child("AudioController")
 
 	# try to get a mesh (sibling of this component), and its material
 	MESH = parent.get_node_or_null('MeshInstance3D')
@@ -40,6 +45,9 @@ func handle_collisions():
 		if collider.has_method('give_damage'):
 			damage(collider.give_damage())
 			damagers.append(collider)
+			if parent_is_player:
+				audio_controller.get_hit()
+				
 	#if len(damagers) > 0:
 		#print('damage: ', damagers)
 

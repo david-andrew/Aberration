@@ -1,5 +1,5 @@
 extends RigidBody3D
-
+class_name Player
 
 const translation_strength = 3.0
 const rotation_strength = 0.5
@@ -19,6 +19,8 @@ var total_bullets_shot = 0
 var bullet_count = 0
 
 @onready var laser = $Laser
+
+@onready var audio = $AudioController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

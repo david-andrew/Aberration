@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://csoggynpxgor1"]
+
+[ext_resource type="AudioStream" uid="uid://ed4ygm3c58on" path="res://audio/soundtrack.ogg" id="1_3bl86"]
+[ext_resource type="Script" path="res://scripts/audio_controller.gd" id="1_eq2ih"]
+[ext_resource type="AudioStream" uid="uid://b23s0yx4lqptc" path="res://audio/hit_loop.ogg" id="3_v5g1a"]
+[ext_resource type="AudioStream" uid="uid://q0dbpksken6n" path="res://audio/cannon.ogg" id="4_2e53y"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_eq2ih")
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_3bl86")
+volume_db = -8.0
+autoplay = true
+
+[node name="HitLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v5g1a")
+volume_db = -80.0
+autoplay = true
+
+[node name="Cannon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2e53y")
+volume_db = -80.0
+autoplay = true
