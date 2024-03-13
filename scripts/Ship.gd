@@ -47,6 +47,7 @@ func reset_player():
 	collision_layer = 1
 	$Health.health = $Health.MAX_HEALTH + 1
 	$Health.damage(1)
+	position += Vector3.FORWARD * 2 # make the camera spring a bit when resetting player
 
 
 func shoot_bullet():
