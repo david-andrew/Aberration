@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bt7osgrpvasxl"]
+[gd_scene load_steps=24 format=3 uid="uid://bt7osgrpvasxl"]
 
 [ext_resource type="PackedScene" uid="uid://comag3ftrfm87" path="res://scenes/large_ship.tscn" id="1_5pbcc"]
 [ext_resource type="PackedScene" uid="uid://ct218m1oc85t8" path="res://scenes/team_id.tscn" id="2_5ta6q"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b1tg053uv0ffy" path="res://assets/textures/MilkeyWay.jpg" id="7_f3ya5"]
 [ext_resource type="Script" path="res://scripts/ChaseCamera.gd" id="8_a85b1"]
 [ext_resource type="PackedScene" uid="uid://csoggynpxgor1" path="res://scenes/audio_controller.tscn" id="9_q0qpt"]
+[ext_resource type="Script" path="res://UI.gd" id="10_epuu3"]
+[ext_resource type="FontFile" uid="uid://dnpih4o6u6268" path="res://fonts/NovaSquare-Regular.ttf" id="10_liufv"]
+[ext_resource type="Script" path="res://Title.gd" id="11_6wi3b"]
+[ext_resource type="Texture2D" uid="uid://bi68f1wieyqly" path="res://fonts/star.png" id="12_suh53"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_278ud"]
 
@@ -32,78 +36,142 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.05
 
+[sub_resource type="LabelSettings" id="LabelSettings_irna5"]
+font = ExtResource("10_liufv")
+font_size = 240
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_7es4q"]
+resource_name = "TitleAnimation"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6.129, 6.5, 17.1, 17.2),
+"transitions": PackedFloat32Array(0.0245183, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Title/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.129, 6.5, 17.1, 17.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Title/TextureRect2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.129, 6.5, 17.1, 17.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oh4b7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Title/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Title/TextureRect2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmevq"]
+_data = {
+"RESET": SubResource("Animation_oh4b7"),
+"TitleAnimation": SubResource("Animation_7es4q")
+}
+
 [node name="World" type="Node3D"]
 
 [node name="LargeShip" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.266457, -0.224144, -0.937423, 0.0669873, 0.965926, -0.25, 0.961516, -0.12941, -0.242363, 327.569, 52.3459, -1359.73)
+transform = Transform3D(-0.266457, -0.224144, -0.937423, 0.0669873, 0.965926, -0.25, 0.961516, -0.12941, -0.242363, 31.5686, 52.3459, -1359.73)
 
 [node name="TeamID" parent="LargeShip" instance=ExtResource("2_5ta6q")]
 
-[node name="LargeShip6" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 346.346, 168.008, -1609)
-
-[node name="TeamID" parent="LargeShip6" instance=ExtResource("2_5ta6q")]
-
 [node name="LargeShip7" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, 111.406, 251.685, -1739.91)
+transform = Transform3D(0.433013, 0.5, -0.75, -0.25, 0.866025, 0.433013, 0.866025, 0, 0.5, -184.594, 251.685, -1739.91)
 
 [node name="TeamID" parent="LargeShip7" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip8" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.533494, 0.25, -0.808013, -0.25, 0.866025, 0.433013, 0.808013, 0.433013, -0.399519, 518.345, -9.99228, -2033.37)
+transform = Transform3D(-0.533494, 0.25, -0.808013, -0.25, 0.866025, 0.433013, 0.808013, 0.433013, -0.399519, 222.345, -9.99228, -2033.37)
 
 [node name="TeamID" parent="LargeShip8" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip2" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 539.345, 99.0077, -1498)
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, 243.345, 99.0077, -1498)
 
 [node name="TeamID" parent="LargeShip2" instance=ExtResource("2_5ta6q")]
 
-[node name="LargeShip14" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.491482, -0.25, -0.834234, -0.0669873, 0.965926, -0.25, 0.868308, -0.0669873, -0.491482, 248.991, 268.349, -1569.28)
-
-[node name="TeamID" parent="LargeShip14" instance=ExtResource("2_5ta6q")]
-
-[node name="LargeShip15" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(2.08616e-07, 0, -1, -0.258819, 0.965926, -5.39939e-08, 0.965926, 0.258819, 2.01508e-07, -35.491, 322.057, -1503.12)
-
-[node name="TeamID" parent="LargeShip15" instance=ExtResource("2_5ta6q")]
-
 [node name="LargeShip19" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.744207, 0.511819, -0.429183, -0.642402, 0.724444, -0.25, 0.182964, 0.46176, 0.86793, -203.491, 186.057, -1503.12)
+transform = Transform3D(0.744207, 0.511819, -0.429183, -0.642402, 0.724444, -0.25, 0.182964, 0.46176, 0.86793, -499.491, 186.057, -1503.12)
 
 [node name="TeamID" parent="LargeShip19" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip25" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.0154779, 0.724561, -0.689036, -0.893016, 0.299957, 0.335483, 0.449759, 0.620513, 0.642402, -48.796, 501.097, -1503.12)
+transform = Transform3D(-0.0154779, 0.724561, -0.689036, -0.893016, 0.299957, 0.335483, 0.449759, 0.620513, 0.642402, -344.796, 501.097, -1503.12)
 
 [node name="TeamID" parent="LargeShip25" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip16" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.0580122, 0.433013, -0.899519, -0.491632, 0.771811, 0.403244, 0.868869, 0.465625, 0.168108, 401.046, 432.225, -1590.97)
+transform = Transform3D(-0.0580122, 0.433013, -0.899519, -0.491632, 0.771811, 0.403244, 0.868869, 0.465625, 0.168108, 105.046, 432.225, -1590.97)
 
 [node name="TeamID" parent="LargeShip16" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip17" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.529447, -0.826752, -0.190178, -0.635433, 0.237953, 0.734577, -0.56206, 0.509764, -0.651329, 696.733, 222.983, -1821.11)
+transform = Transform3D(-0.529447, -0.826752, -0.190178, -0.635433, 0.237953, 0.734577, -0.56206, 0.509764, -0.651329, 400.733, 222.983, -1821.11)
 
 [node name="TeamID" parent="LargeShip17" instance=ExtResource("2_5ta6q")]
-
-[node name="LargeShip18" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.707107, 0, -0.707107, -0.183013, 0.965926, -0.183013, 0.683013, 0.258819, 0.683013, 447.236, 205.552, -1334.92)
-
-[node name="TeamID" parent="LargeShip18" instance=ExtResource("2_5ta6q")]
 
 [node name="LargeShip9" parent="." instance=ExtResource("1_5pbcc")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, -221.153, 402.008, -79.4564)
 
 [node name="TeamID" parent="LargeShip9" instance=ExtResource("2_5ta6q")]
-team = 0
-
-[node name="LargeShip10" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.5, -3.08008e-09, -0.866025, 0.224144, 0.965926, -0.129409, 0.836516, -0.258819, -0.482963, 61.8468, 240.008, 201.544)
-
-[node name="TeamID" parent="LargeShip10" instance=ExtResource("2_5ta6q")]
 team = 0
 
 [node name="LargeShip11" parent="." instance=ExtResource("1_5pbcc")]
@@ -130,12 +198,6 @@ transform = Transform3D(0.965926, 0, -0.258819, -0.0682213, 0.964636, -0.254605,
 [node name="TeamID" parent="LargeShip5" instance=ExtResource("2_5ta6q")]
 team = 0
 
-[node name="LargeShip20" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(-0.677077, 0.12941, -0.724444, 0.433013, 0.866026, -0.25, 0.595035, -0.482963, -0.642402, 32.9024, 447.414, 305.847)
-
-[node name="TeamID" parent="LargeShip20" instance=ExtResource("2_5ta6q")]
-team = 0
-
 [node name="LargeShip21" parent="." instance=ExtResource("1_5pbcc")]
 transform = Transform3D(-0.922537, 0.313564, 0.22495, 0.212688, 0.89952, -0.381614, -0.322007, -0.304209, -0.896531, -151.57, 455.15, 206.844)
 
@@ -152,12 +214,6 @@ team = 0
 transform = Transform3D(0.997717, 0.0669873, 0.00851846, -0.0669873, 0.965926, 0.25, 0.00851862, -0.25, 0.968208, -135.906, 165.076, 201.746)
 
 [node name="TeamID" parent="LargeShip23" instance=ExtResource("2_5ta6q")]
-team = 0
-
-[node name="LargeShip24" parent="." instance=ExtResource("1_5pbcc")]
-transform = Transform3D(0.965926, 0.0669873, -0.25, 0, 0.965926, 0.258819, 0.258819, -0.25, 0.933013, -79.4205, 210.245, 155.228)
-
-[node name="TeamID" parent="LargeShip24" instance=ExtResource("2_5ta6q")]
 team = 0
 
 [node name="Player" type="RigidBody3D" parent="."]
@@ -201,3 +257,52 @@ target = NodePath("../Player/CameraTarget")
 [node name="Camera3D" type="Camera3D" parent="ChaseCamera"]
 
 [node name="AudioController" parent="." instance=ExtResource("9_q0qpt")]
+
+[node name="UI" type="Node" parent="."]
+script = ExtResource("10_epuu3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="Title" type="Label" parent="UI/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.5
+anchor_right = 0.51
+anchor_bottom = 0.5
+offset_left = -651.8
+offset_top = -277.0
+offset_right = 622.2
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+text = "Silver Void"
+label_settings = SubResource("LabelSettings_irna5")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_6wi3b")
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/Title"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 201.0
+offset_top = 45.0
+offset_right = 261.0
+offset_bottom = 104.0
+texture = ExtResource("12_suh53")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="UI/CanvasLayer/Title"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 45.0
+offset_right = 1090.0
+offset_bottom = 104.0
+texture = ExtResource("12_suh53")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+"": SubResource("AnimationLibrary_dmevq")
+}
