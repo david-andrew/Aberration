@@ -63,11 +63,15 @@ func _physics_process(_delta):
 		cull_bullets()
 	
 	# lesten for leaving fullscreen
-	if Input.is_action_just_pressed("escape"):
+	if Input.is_action_just_pressed("f"):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	if Input.is_action_just_pressed("escape"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
 
 func add_bullet() -> int:
 	total_bullets += 1

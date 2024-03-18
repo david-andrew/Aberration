@@ -27,7 +27,7 @@ Made for Acerola Jam 0 (theme "Aberration"), enemies lead their shots so that bu
 
 
 ### Misc
-*escape* - toggle fullscreen/windowed mode
+*f* - toggle fullscreen/windowed mode
 
 *enter* - toggle HUD active/disabled
 
